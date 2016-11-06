@@ -12,10 +12,10 @@ function logout(){
 	}, function(){
 		$.ajax({
 	        type: "get",
-	        url: urlpath + '/loginOut.sd?random=' + Math.random(),
+	        url: urlpath + '/loginOut.h?random=' + Math.random(),
 	        dataType: "json",
 	        success: function(data){
-	        	window.location.href = 'login.sd';
+	        	window.location.href = 'login.h';
 	        }
 		});
 	});

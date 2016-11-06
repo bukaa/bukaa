@@ -144,4 +144,9 @@
     	select <include refid="columnListSql"/> from <include refid="tableNameSql"/> where <include refid="idSql"/>
   	</select>
   	
+  	<!-- 根据登录名查找数据 -->
+  	<select id="findUserByLoginId" parameterType="java.lang.String" resultMap="BaseResultMap">
+    	select <include refid="columnListSql"/> from <include refid="tableNameSql"/> where login_id = #{loginId}
+  	</select>
+  	
 </mapper>

@@ -61,6 +61,6 @@
     <location>/WEB-INF/jsp/error/500.jsp</location>
   </error-page>
   <welcome-file-list>
-    <welcome-file>login.sd</welcome-file>
+    <welcome-file>login.h</welcome-file>
   </welcome-file-list>
 </web-app>

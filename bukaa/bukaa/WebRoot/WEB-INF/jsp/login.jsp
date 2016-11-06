@@ -8,6 +8,14 @@
 		<%@ include file="/head.jsp"%>
 		<link href="${ctx}/static/h+/4.1.0/css/login.css" rel="stylesheet">
 		<title>神盾(RSF)平台</title>
+		<script type="text/javascript">
+			window.onload(functrion(){
+				var errorMessage = $("#errorMessage").val();
+				if(errorMessage != undefined &&　errorMessage　!= ""){
+					alert(errorMessage);
+				}				
+			});
+		</script>
 	</head>
 	<body class="signin">
 	    <div class="signinpanel">
@@ -30,14 +38,15 @@
 	                </div> 
 	            </div>
 	            <div class="col-sm-5">
-	                <form id="loginForm">
+	                <form id="loginForm" action="loginCheck.h" method="post">
 	                    <h4 class="no-margins">登录：</h4>
 	                    <p class="m-t-md">神盾(RSF)平台</p>
 	                    <input type="text" id="loginId" name="loginId" class="form-control uname" placeholder="用户名" />
 	                    <input type="password" id="loginPass" name="loginPass" class="form-control pword m-b" placeholder="密码" />
-	                    <input type="hidden" name="fromUrl" id="fromUrl" value="${param.fromUrl}"/>
+	                    <input type="hidden" name="fromUrl" id="fromUrl" value="${fromUrl}"/>
+	                    <input type="hidden" name="errorMessage" id="errorMessage" value="${errorMessage}"/>
 	                    <a href="">忘记密码了？</a>
-	                    <input type="button" class="btn btn-success btn-block" value="登录(admin/123)" id="btnLogin">
+	                    <input type="submit" class="btn btn-success btn-block" value="登录(bukaa/123)" id="btnLogin">
 	                </form>
 	            </div>
 	        </div>
@@ -48,6 +57,5 @@
 	        </div>
 	    </div>
 	    <%@ include file="/foot.jsp"%>
-	    <script src="${ctx}/static/pro/js/login.js"></script>
 	</body>
 </html>

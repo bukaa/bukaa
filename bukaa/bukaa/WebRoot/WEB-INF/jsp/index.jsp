@@ -1,6 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="system" uri="/WEB-INF/classes/tld/system.tld"%>
 <c:set var="ctx" value="${pageContext.request.contextPath}" />
 
 <!DOCTYPE HTML>
@@ -22,17 +21,17 @@
 	                <ul class="nav" id="side-menu">
 	                    <li class="nav-header">
 	                        <div class="dropdown profile-element">
-	                            <span><img alt="image" class="img-circle" src="${ctx}/system/user/showImage.sd?id=${user.id}" /></span>
+	                            <span><img alt="image" class="img-circle" src="${ctx}/system/user/showImage.h?id=${user.id}" /></span>
 	                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
 	                                <span class="clear">
 		                               	<span class="block m-t-xs"><strong class="font-bold">${user.loginId }</strong></span>
-		                                <span class="text-muted text-xs block">${user.name }<b class="caret"></b></span>
+		                                <span class="text-muted text-xs block">${user.realName }<b class="caret"></b></span>
 	                                </span>
 	                            </a>
 	                            <ul class="dropdown-menu animated fadeInRight m-t-xs">
 	                               <!--  <li><a class="J_menuItem" href="form_avatar.html">修改头像</a></li>--> 
-	                                <li><a class="J_menuItem" href="${ctx}/system/user/editUserInfo/${user.id }.sd">个人资料</a></li>
-	                                <li><a class="J_menuItem" href="${ctx}/system/user/changePw/${user.id }.sd">修改密码</a></li>
+	                                <li><a class="J_menuItem" href="${ctx}/system/user/editUserInfo/${user.id}.h">个人资料</a></li>
+	                                <li><a class="J_menuItem" href="${ctx}/system/user/changePw/${user.id}.h">修改密码</a></li>
 	                               <!--  <li><a class="J_menuItem" href="contacts.html">联系我们</a></li>--> 
 	                               <!-- <li><a class="J_menuItem" href="mailbox.html">信箱</a></li>--> 
 	                                <li class="divider"></li>

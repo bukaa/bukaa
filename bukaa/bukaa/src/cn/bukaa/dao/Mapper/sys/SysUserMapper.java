@@ -19,6 +19,8 @@ public interface SysUserMapper{
 	public int deletePhoto(String id);
 	
 	public List<SysUser> findAll();
+
+	public SysUser findUserByLoginId(String loginId);
 	
 	
 	

@@ -4,11 +4,11 @@ public class StringUtil {
 	
 	public static final boolean isNotEmpty(String str){
 		if(str == null){
-			return true;
+			return false;
 		}else if("".equals(str)){
-			return true;
+			return false;
 		}
-		return false;
+		return true;
 	}
 
 }

@@ -17,5 +17,9 @@ public class SysUserService implements ISysUserService {
 		return biz.findById(id);
 	}
 
+	public SysUser findUserByLoginId(String loginId) {
+		return biz.findUserByLoginId(loginId);
+	}
+
 
 }
