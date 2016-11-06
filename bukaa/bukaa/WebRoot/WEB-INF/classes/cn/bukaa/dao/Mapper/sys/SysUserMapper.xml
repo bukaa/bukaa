@@ -82,7 +82,7 @@
   	</sql>
   	
   	<!-- 保存数据 -->
-  	<insert id="save" parameterType="sundun.sys.entity.SysUser" >
+  	<insert id="save" parameterType="cn.bukaa.dao.entity.sys.SysUser" >
     	insert into <include refid="tableNameSql"/> (<include refid="insertListSql"/>)
     	values (#{id,jdbcType=VARCHAR}, #{loginId,jdbcType=VARCHAR}, #{loginPass,jdbcType=VARCHAR}, 
 	      #{realName,jdbcType=VARCHAR}, #{no,jdbcType=VARCHAR}, #{orgId,jdbcType=VARCHAR}, 
@@ -93,7 +93,7 @@
   	</insert>
   	
   	<!-- 更新数据 -->
-  	<update id="update" parameterType="sundun.sys.entity.SysUser" >
+  	<update id="update" parameterType="cn.bukaa.dao.entity.sys.SysUser" >
     	update <include refid="tableNameSql"/>
     	<set>
 			login_id = #{loginId,jdbcType=VARCHAR},

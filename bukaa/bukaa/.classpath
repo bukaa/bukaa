@@ -55,6 +55,6 @@
 	<classpathentry kind="lib" path="lib/spymemcached-2.10.0.jar"/>
 	<classpathentry kind="lib" path="lib/sundun.build.jar"/>
 	<classpathentry kind="lib" path="lib/thumbnailator-0.4.8.jar"/>
-	<classpathentry kind="lib" path="lib/sundun-cache-1.0.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="output" path="WebRoot/WEB-INF/classes"/>
 </classpath>

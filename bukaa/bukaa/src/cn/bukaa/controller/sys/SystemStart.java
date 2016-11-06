@@ -4,7 +4,6 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 
-import sundun.cache.cons.CacheConstants;
 import cn.bukaa.util.StringUtil;
 
 /**
@@ -93,10 +92,10 @@ public class SystemStart extends HttpServlet{
 		boolean isDisableCache = Boolean.parseBoolean(this.getInitParameter("isDisableCache"));
 		if(isDisableCache)
 		{
-			System.setProperty(CacheConstants.DISABLE_CACHE_PROPERTY,"true");
+			System.setProperty("DISABLE_CACHE_PROPERTY","true");
 		}else
 		{
-			System.setProperty(CacheConstants.DISABLE_CACHE_PROPERTY,"false");
+			System.setProperty("DISABLE_CACHE_PROPERTY","false");
 		}
 	}
 }

@@ -44,7 +44,7 @@
 	<!-- Spring和MyBatis整合 -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"/>
-		<property name="mapperLocations" value="classpath:mapper/**/*.xml"/>
+		<property name="mapperLocations" value="classpath:cn/bukaa/dao/Mapper/**/*.xml"/>
 		<property name="plugins">
 			<array>
 				<bean class="com.github.pagehelper.PageHelper">
@@ -58,27 +58,21 @@
 		</property>
 	</bean>
 	
-	<!-- DAO接口所在包
-	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="sundun.portal.mapper"/>
-		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
-	</bean> -->
-	
 	<!-- 持久化模板SqlSessionTemplate注入 -->
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
 	  	<constructor-arg index="0" ref="sqlSessionFactory" />
 	</bean>
 	
 	<!-- 基础Dao的SqlSession注入 -->
-	<bean id="baseDao" class="sundun.core.bll.orm.mybatis.BaseDao">
+	<bean id="baseDao" class="cn.bukaa.dao.BaseDao">
 	  	<property name="sqlSession" ref="sqlSession" />
 	</bean>
 	
-	<!-- DAO接口所在包
+	<!-- DAO接口所在包-->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="sundun.core.bll.orm.mybatis.mapper"/>
+		<property name="basePackage" value="cn.bukaa.dao.Mapper"/>
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
-	</bean> -->
+	</bean> 
 	
 	<!-- 事件管理 -->
 	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
@@ -103,7 +97,7 @@
      </tx:advice>
      
      <aop:config proxy-target-class="true">
-     	<aop:pointcut expression="execution(public * sundun..*.service.*Service.*(..))" id="txServicePoint"/>	       	          	   	     	
+     	<aop:pointcut expression="execution(public * cn.bukaa.service.*Service.*(..))" id="txServicePoint"/>	       	          	   	     	
      	<aop:advisor advice-ref="txAdvice" pointcut-ref="txServicePoint" order="1000"/>
      </aop:config>
 </beans>

@@ -33,7 +33,6 @@
 	                <form id="loginForm">
 	                    <h4 class="no-margins">登录：</h4>
 	                    <p class="m-t-md">神盾(RSF)平台</p>
-	                    <span id="sundun-error" style="color: red"></span>
 	                    <input type="text" id="loginId" name="loginId" class="form-control uname" placeholder="用户名" />
 	                    <input type="password" id="loginPass" name="loginPass" class="form-control pword m-b" placeholder="密码" />
 	                    <input type="hidden" name="fromUrl" id="fromUrl" value="${param.fromUrl}"/>

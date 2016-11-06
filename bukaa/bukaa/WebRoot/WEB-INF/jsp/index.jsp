@@ -188,7 +188,7 @@
 	            <!-- 底部 -->
 	            <div class="footer">
 	                <div class="pull-right">
-	                	&copy; 2016 <a href="http://www.sundun.cn/" target="_blank">神盾信息技术有限公司</a>
+	                	&copy; 2016 <a href="http://bukaa.cn/" target="_blank">bukaa</a>
 	                </div>
 	            </div>
 	        </div>
