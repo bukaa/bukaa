@@ -1,0 +1,55 @@
+
+.content{;margin: auto;background: #0d2a52}
+.box2{width: 1000px;height: 350px;overflow: hidden;position: relative;margin: auto;background:url(../img/banner_03.png)no-repeat;background-size:1000px 100% ;}
+.box2:hover p{display: block;}
+
+.box2 div{float: left;left: 98px;top: 6px;height: 330px;}
+
+
+p.prev{
+	width:40px;
+	height: 60px;
+	font-size: 18px;
+	float: left;
+	position: absolute;
+	left: 30px;
+	top: 180px;
+	font-size: 30px;
+	text-align: center;
+	line-height: 60px;
+	color: #FFFFFF;
+	background: rgba(250,250,250,0.1);
+	cursor: pointer;
+	display: none;
+	}
+	
+p.next{
+	width: 40px;
+	height: 60px;
+	cursor: pointer;
+	float: right;
+	position: absolute;
+	right: 30px;
+	top: 180px;
+	font-size: 30px;
+	text-align: center;
+	line-height: 60px;
+	color: #FFFFFF;
+	background: rgba(250,250,250,0.1);
+	cursor: pointer;
+	display: none;
+	}
+
+
+	
+.zhong .wrap{width: 100%;}
+.zhong{width: 855px;height:312px;margin-top: 10px;position: relative;}
+.zhong div{text-align: center;}
+.zhong div img{display: inline-block;width:800px;height: 330px;}
+.zhong div p{margin: 7px 22px;color: #636064;text-overflow: ellipsis; white-space: nowrap;overflow: hidden;}
+.zhong div p:last-child{background: #f2f2f2;}
+.zhong div p:last-child{border: 1px solid #ddd;width: 83px;margin-left: 20px;}
+.zhong div p a{text-decoration:none;color: #4b4a4a;cursor: pointer;}
+.zhong div p:last-child:hover{background: #ccc;}
+.box2 .classfl_btn{text-align: center;width: 1000px;}
+.wrap{width: 800px !important;}

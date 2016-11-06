@@ -1,0 +1,31 @@
+.copyRight{
+	background-color: #f4f4f4;
+	height:100%
+    width: 100%;
+    margin-top: 20px;
+  	padding-bottom: 20px;
+   
+
+}
+.copyRight>div{
+	color: #333;
+	font-size: 12px;
+	width: 980px;
+	margin: 0 auto;
+	text-align: center;
+	padding-top: 50px;
+}
+.copyRight>div p{
+	width: 420px;
+	margin-left: auto;
+	margin-right: auto;
+	white-space: nowrap;
+	overflow: hidden;
+}
+.copyRight>div a{
+	color: #333;
+	display: inline-block;
+	padding: 0 47px;
+	border-left: 1px solid #aaaaaa;
+	margin-left: -1px;
+}

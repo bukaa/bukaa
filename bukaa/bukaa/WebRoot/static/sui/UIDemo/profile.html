@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>个人信息</title>
+	<link rel="stylesheet" type="text/css" href="../css/mystyle/css/myStyle.css">
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="../css/font-awesome.min.css">
+</head>
+<body>
+<!--<div class="row cl">
+    <label class="form-label col-xs-4 col-sm-2">附件：</label>
+    <div class="formControls col-xs-8 col-sm-4"> <span class="btn-upload form-group">
+              <input class="input-text upload-url" type="text" name="uploadfile1" id="uploadfile1" readonly="" style="width:200px">
+              <a href="javascript:void();" class="btn btn-primary upload-btn"><i class="fa fa-check"></i> 浏览文件</a>
+              <input type="file" multiple="" name="file-2" class="input-file">
+              </span> </div>
+</div>-->
+
+<form action="" method="post" class="form form-horizontal" id="form" novalidate="novalidate">
+	<legend>个人信息</legend>
+	<!--<div class="headerTip">请完善以下信息</div>-->
+	<div class="basic">
+		<div class="tittle col-sm-2">基本信息</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2">会员身份：</label>
+			<div class="formControls skin-minimal col-xs-8 col-sm-4 "
+					 style="margin-top: 3px">
+				<div class="radio-box ">
+					<input type="radio" id="radio-1" name="shenf">
+					<label for="radio-1">个人</label>
+				</div>
+				<div class="radio-box">
+					<input type="radio" id="radio-2" name="shenf" checked>
+					<label for="radio-2">团体</label>
+				</div>
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2">真实姓名：</label>
+			<div class="formControls col-xs-8 col-sm-4">
+				<input type="text" class="input-text" placeholder="请输入你的名字" name="name" id="name">
+			</div>
+		</div>
+	</div>
+
+	<div class="business">
+		<div class="tittle">业务信息</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2">主要行业应用：</label>
+			<div class="formControls col-xs-8 col-sm-4"> <span class="select-box">
+									<select class="select" size="1" name="city">
+										<option value="" selected=""></option>
+										<option value="1">个人网站</option>
+										<option value="2">app推广</option>
+										<option value="3">新闻媒体</option>
+									</select>
+									</span>
+				<ul class="xuanzeBT">
+					<li class="fenlei"><a>社区论坛博客<i class="fa fa-check"></i></a>
+					</li>
+					<li class="fenlei"><a>企业官网<i class="fa fa-check"></i></a>
+					</li>
+					<li class="fenlei"><a>综合门户<i class="fa fa-check"></i></a>
+					</li>
+					<li class="fenlei"><a>个人站长<i class="fa fa-check"></i></a>
+					</li>
+					<li class="fenlei"><a>网建公司<i class="fa fa-check"></i></a>
+					</li>
+					<li class="fenlei"><a>其他<i class="fa fa-check"></i></a></li>
+				</ul>
+			</div>
+
+		</div>
+
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2">主营业务：</label>
+			<div class="formControls col-xs-8 col-sm-4">
+				<input type="text" class="input-text" autocomplete="off"
+							 placeholder="主营业务" name="business" id="business">
+			</div>
+		</div>
+
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2">网址：</label>
+			<div class="formControls col-xs-8 col-sm-4">
+				<input type="text" class="input-text" placeholder="http://" name="url" id="url">
+			</div>
+		</div>
+	</div>
+
+
+	<div>
+		<div class="tittle">联系信息</div>
+
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2">所在城市：</label>
+			<div class="formControls col-xs-8 col-sm-4"> <span class="select-box">
+									<select class="select" size="1" name="city">
+										<option value="" selected=""></option>
+										<option value="1">北京</option>
+										<option value="2">上海</option>
+										<option value="3">广州</option>
+									</select>
+									</span></div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2">街道地址：</label>
+			<div class="formControls col-xs-8 col-sm-4">
+				<input type="text" class="input-text" autocomplete="off"
+							 placeholder="请输入街道地址" name="address" id="address">
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2">联系电话：</label>
+			<div class="formControls col-xs-8 col-sm-4">
+				<input type="text" class="input-text" autocomplete="off"
+							 placeholder="请输入手机号码" name="mobile" id="mobile">
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2">邮箱：</label>
+			<div class="formControls col-xs-8 col-sm-4">
+				<input type="text" class="input-text" autocomplete="off"
+							 placeholder="电子邮箱地址" name="email" id="email">
+			</div>
+		</div>
+	</div>
+	<div class="row cl " style="padding-left: 17%"><input
+		class="btn btn-secondary radius" type="submit" value="保存" id="save"></div>
+</form>
+<script src="../js/jquery.min.js"></script>
+<script>
+	$(function () {
+		var selc = $(".fenlei");
+
+		selc.each(function () {     //each相当于一个循环
+			if ($(this).hasClass("BTselected")) {
+				$(this).removeClass("BTselected");
+				$(this).css("background-color", "#EAEDF1")
+			}
+
+			$(this).click(function (event) {         //if的else
+				event.preventDefault();
+
+				if (!$(this).hasClass("BTselected")) {
+					selc.each(function () {         //先遍历去除所有seleced，避免导致可以选择多个
+						$(this).removeClass("BTselected");
+						$(this).css("background-color", "#EAEDF1");
+						$(this).find("i").css("display", "none");
+					});
+					$(this).addClass("BTselected");
+					$(this).find("i").css("display", "inline");
+					$(this).css("background-color", "#ffffff")
+				}
+			});
+		});
+
+	});
+</script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd"
+    version="2.0">
+    <description>system标签库</description>
+	<tlib-version>2.0</tlib-version>
+	<short-name>system</short-name>
+	<uri>systemtld</uri>
+	<tag>
+    	<description>系统模块处理标签类</description>
+		<name>module</name>
+		<tag-class>sundun.sys.tag.ModuleTag</tag-class>
+		<body-content>JSP</body-content>
+	</tag>	
+</taglib>

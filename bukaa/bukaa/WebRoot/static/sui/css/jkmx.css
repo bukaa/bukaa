@@ -1,0 +1,146 @@
+
+h1,h2,h3,h4,h5,h6 {font-weight: 100;}
+
+h1 {font-size: 30px;}
+
+h2 { font-size: 24px;}
+
+h3 {font-size: 16px;}
+
+h4 {font-size: 14px;}
+
+h5 { font-size: 12px;}
+
+h6 {font-size: 10px;}
+
+h3,h4,h5 {margin-top: 5px;font-weight: 600;}
+
+a:focus {outline: none;}
+
+a:hover{text-decoration: none;color: #000000;}
+div,span,p,h1,h2,h3,h4,h5,h6{margin: 0;padding: 0;}
+
+.content{width: 1000px;margin: auto;}
+.Top{width: 1000px;margin:auto;font-size: 16px;margin: 20px 0;padding-left: 20px;}
+.Top span{font-size: 16px;padding: 0 5px;}
+
+.wap{width: 1000px;margin: auto;border: 1px solid #ccc;margin-bottom: 30px;}
+.content_box{width: 1000px;margin: auto;text-align: center;position: relative;border-bottom: 1px solid #CCCCCC;}
+.content_box>h2{display: inline-block;height: 44px;margin: 20px 0;line-height: 44px;font-weight: 700;font-family:"宋体";}
+.container_btn{position: absolute;right: 10px;bottom: 28px;}
+.container_btn>a{display: inline-block;width: 100px;height: 30px;border: 1px solid #ccc;line-height: 26px;}
+.container_btn>a:hover{background: #F4F4F4;}
+.container{width: 1000px;}
+.content_header{margin: 0 20px;border-bottom: 1px solid #CCCCCC;padding: 8px 0;}
+.content_header>span{font-size: 16px;font-weight: bold;font-family: "宋体";}
+.container_text{padding: 10px 0;padding-left: 37px;font-size: 16px;font-family: "宋体";font-weight: 500;color: #666;}
+.container_text>h3{margin: 15px 0;padding: 3px 0;}
+.content .content_main .main_left{
+	float: left;
+    width: 280px;
+    color: #444444;
+    position: relative;
+    background-color:#F7F7F7;
+	font-size:14px;
+	line-height:28px;
+	/*height:500px;*/  
+}	
+.content .content_main .main_left .left_n{
+	margin-top:30px;
+	margin-left:20px;
+	line-height:30px;
+	font-size:14px;
+}	
+.line{
+	background: none repeat scroll 0 0 #E2E2E2;
+    border-bottom: 1px solid #FFFFFF;
+    height: 1px;
+    margin: 10px 0;
+    overflow: hidden;
+	margin-right:20px;
+}
+.fwcs{
+	background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #D1D1D1;
+    border-radius: 3px;
+    margin: 10px 0;
+	margin-right:20px;
+	padding-left:20px;
+	line-height:40px;
+}
+.ts{
+	width:76px;
+	height:25px;
+	float:right;
+	margin-right:20px;
+	background-image:url(../images/dy2.png);}	
+.ts:hover{
+	background-image:url(../images/dy1.png);
+}	
+.content .content_main  .main_right{
+	width:680px;
+	float:right;
+	font-size:14px;
+	color: #666;
+}	
+.content .content_main  .main_right .right_1{
+	margin-top:30px;
+	margin-right:20px;
+}
+.content .content_main  .main_right .right_1 .right_1n{
+	height:100px;
+	border: 1px solid #D1D1D1;
+}		
+.content .content_main  .main_right .right_2{
+	margin-top:30px;
+	margin-right:20px;
+}
+.content .content_main  .main_right .right_2 .right_2n{
+	height:220px;
+	border: 1px solid #D1D1D1;
+}
+.content .content_main  .main_right1{
+	width:680px;
+	float:right;
+	font-size:14px;
+	color: #666;
+}	
+.content .content_main  .main_right1 .right1_1{
+	margin-top:30px;
+	margin-right:20px;
+}
+.content .content_main  .main_right1 .right1_1 .right1_1n{
+	height:100px;
+	border: 1px solid #D1D1D1;
+	padding-left:20px;
+	padding-top:20px;
+}		
+.content .content_main  .main_right1 .right1_2{
+	margin-top:30px;
+	margin-right:20px;
+}
+.content .content_main  .main_right1 .right1_2 a{ color:#333;}	
+.content .content_main  .main_right1 .right1_2 a:hover{ color: #F60 ;}	
+.content .content_main  .main_right1 .right1_2 .right1_2n{
+	height:220px;
+	border: 1px solid #D1D1D1;
+	overflow:auto;
+}
+.param-input {
+	border: 1px solid #E7E7E7; box-shadow: 1px 1px 1px 0 #F0F0F0 inset;
+	width: 212px; height: 22px; padding: 0 0 0 2px; vertical-align: top;
+	color: #666666; line-height: 22px;
+}
+.param-textarea{ overflow: hidden; width: 660px; height: 100px; border: 1px solid #E7E7E7;}
+.result-textarea{ width:660px; height: 300px; border: 1px solid #E7E7E7;}
+.call-service { margin-bottom: 5px; margin-top: 5px;}
+.call-service input {
+	cursor: pointer; color: #ffffff; display: inline-block; padding: 0 0 0 3px; height: 24px;
+	line-height: 25px; width: 75px; margin-left: 140px; border: 0px; background-position-x: 100%;
+	background-position-y: -125px; background: url('../images/dy2.png');
+}
+h3>span{margin-left: 8px;}
+.tb{width: 100%;margin-right: 30px;}
+.tb tr th,.tb tr td{border: 1px solid #DDDDDD;text-align: center;}
+.tb tr th{font-size: 12px;padding: 5px 0;background: #F4F4F4;color: #666;}
+.tb tr td{font-size: 12px;padding: 10px 0;color: #666;}

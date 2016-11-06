@@ -1,0 +1,571 @@
+/*注册页*/
+body {
+	background-color: #f4f4f4;
+}
+ul{
+	padding: 0;
+}
+.middle {
+	background-color: #f4f4f4;
+	padding-top: 6.8%;;
+}
+
+.middle > .content > p {
+	margin: 10px;
+	margin-right: auto;
+	margin-left: auto;
+	text-align: center;
+	font-size: 12px;
+	color: #909090;
+}
+
+.middle > .content {
+	width: 1000px;
+	margin: 0 auto;
+	overflow: hidden;
+}
+
+.middle > .content > div {
+	width: 660px;
+	overflow: hidden;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.middle > .content .geren, .middle > .content .qiye {
+	float: left;
+	min-height: 300px;
+	min-width: 300px;
+	background-color: #FFFFFF;
+	margin-top: 50px;
+	cursor: pointer;
+	border: solid 1px #d5d5d5;
+}
+
+.middle > .content .geren:hover, .middle > .content .qiye:hover {
+	border: 1px #1092f2 solid;
+}
+
+.type-img {
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 20px;
+}
+
+.geren .type-img {
+	width: 128px;
+	height: 126px;
+	background-image: url("../images/register.png");
+	background-position: -2px -121px;
+}
+
+.qiye .type-img {
+	width: 141px;
+	height: 117px;
+	background-position: -2px -2px;
+	margin-bottom: 16px;
+	background-image: url("../images/register.png");
+}
+
+div.type-name {
+	font-size: 20px;
+	color: #636363;
+}
+
+.type-name, .type-des {
+	text-align: center;
+	font-family: 微软雅黑;
+	margin: 5px;
+	color: #909090;
+}
+
+/*from openQQ*/
+.step {
+	height: 42px;
+	border: 1px solid #ECECEC;
+	background: #fff;
+	margin-bottom: 15px;
+	font-size: 13px;
+	width: 1000px;
+	margin-left: auto;
+	margin-right: auto
+}
+
+.step ul {
+	font-size: 0;
+	white-space: nowrap;
+	overflow: hidden
+}
+
+.step ul li {
+	font-size: 13px;
+	display: inline-block;
+	*display: inline;
+	*zoom: 1;
+	vertical-align: top;
+	width: 33.33%;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	color: #b2b2b2;
+	position: relative
+}
+
+.step ul li h2 {
+	font-size: 13px;
+	margin-top: 0;
+}
+
+.step .arrow {
+	position: absolute;
+	top: 0;
+	right: -20px;
+	width: 20px;
+	height: 40px;
+	background-image: url("../images/global.png");
+	background-position: -231px -46px;
+}
+
+.step .step-cur, .step .step-done {
+	background: #2d8ed8
+}
+
+.step .step-cur .step-tit {
+	color: #fff;
+	font-weight: 700
+}
+
+.step .step-done .step-tit {
+	color: #fff;
+	font-weight: 400
+}
+
+.step .step-cur .arrow, .step .step-done .arrow {
+	background-image: url("../images/global.png");
+	background-position: -231px -98px;
+}
+
+.step .step1 {
+	z-index: 3
+}
+
+.step .step2 {
+	z-index: 2
+}
+
+.step .step3 {
+	z-index: 1
+}
+
+.step .step-tit {
+	display: inline-block;
+	position: relative;
+	margin-left: 30px
+}
+
+.step .step-tit .ico-cir-num {
+	position: absolute;
+	left: 0;
+	top: 50%;
+	margin: -12px 0 0 -30px;
+	width: 24px;
+	height: 24px;
+	background-image: url("../images/global.png");
+	background-position: -118px -222px;
+	line-height: 24px;
+	color: #d5d5d5
+}
+
+.step .step-cur .ico-cir-num {
+	font-weight: 400;
+	background-image: url("../images/global.png");
+	background-position: -144px -221px;
+	color: #fff
+}
+
+.step .step-done .ico-cir-num {
+	text-indent: -999em;
+	overflow: hidden;
+	background-image: url("../images/global.png");
+	background-position: -170px -221px;
+}
+
+.layout > a, .layout > a:hover, .layout > a:focus {
+	text-decoration: none
+}
+
+.btn-blue, .btn-gray {
+	display: inline-block;
+	*zoom: 1;
+	font-size: 16px;
+	line-height: 38px;
+	padding: 0 24px;
+	margin: 0 10px;
+	border-radius: 2px
+}
+
+.btn-gray {
+	background: #f5f5f5;
+	border: 1px solid #CDCDCD;
+	color: #636363
+}
+
+.btn-gray:hover, .btn-gray:focus {
+	background: #E4E4E4;
+	color: #636363
+}
+
+.btn-blue {
+	background: #2d8ed8;
+	border: 1px solid #0979CD;
+	color: #fff
+}
+
+.btn-blue:hover, .btn-blue:focus {
+	background: #1473BC;
+	color: #FFFFFF
+}
+
+.btn-gray.btn-disable {
+	color: #C4C4C4;
+	background: #F7F7F7;
+	border-color: #E5E5E5
+}
+
+.btm-btn-wrap {
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	text-align: center;
+	padding: 18px 0;
+	z-index: 1000
+}
+
+.btm-btn-wrap .bg {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: #E5E5E5;
+	opacity: .9;
+	filter: alpha(opacity=90)
+}
+
+.btm-btn-wrap .layout {
+	position: relative
+}
+
+/*from openQQ end*/
+
+div.personal{
+	width: 1000px;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: #ffffff;
+	overflow: hidden;
+	margin-bottom: 0;
+	margin-top: 30px;
+	border: 1px solid #c6c6c6;
+}
+.personal>.form-tit{
+	/*margin-bottom: 30px;*/
+	padding-left: 20px;
+}
+.form-row{
+	padding: 0 10px;
+	font-size: 14px;
+	margin-bottom: 15px;
+}
+
+.row-tit{
+	margin-top:6px;
+	line-height: 32px;
+	color: #ababab;
+	font-size: 17px;
+}
+.form-row input{
+	padding-top: 4px;
+	padding-bottom: 4px;
+}
+.btn-choose{
+	margin-bottom: 20px;
+}
+.btn-choose>.layout>a{
+	display: inline-block;
+	*zoom: 1;
+	font-size: 16px;
+	line-height: 38px;
+	margin-right: 10px;
+	border-radius: 2px;
+	/*background-color: #f5f5f5;*/
+	border: 1px solid #CDCDCD;
+	color: #636363;
+	width: 100px;
+	text-align: center;
+}
+.btn-choose>.layout>a>i.fa{
+	display: none;
+}
+.btn-choose>.layout>a.choosed{
+	border: 2px solid #1092f2;
+}
+.btn-choose>.layout>a.choosed>i.fa{
+	display: inline-block;
+	margin-right: 5px;
+	color: #1092f2;
+}
+
+@media (min-width: 769px) {
+	.middle > .content > div {
+		width: 560px;
+	}
+
+	.middle {
+		padding-top: 40px;
+	}
+
+	.middle > .content > h3 {
+		font-size: 20px;
+		padding-left: 220px;
+		margin-top: 10px;
+	}
+
+	.middle > .content .geren, .middle > .content .qiye {
+		float: left;
+		min-height: 250px;
+		min-width: 250px;
+		background-color: #FFFFFF;
+		margin-top: 25px;
+	}
+}
+label.error {background:url("../images/wrong.png") no-repeat; color: #f37777;font-size: 14px;font-weight: normal;padding-left:24px;margin-left: 15px;height: 23px;padding-top: 2px;}
+label.valid{display: none;background:url("") no-repeat}
+/*注册页结束*/
+
+/**上传组件选择样式**/
+.webuploader-container {
+	position: relative;display: inline-block;
+}
+.webuploader-element-invisible {
+	position: absolute !important;
+	clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+    clip: rect(1px,1px,1px,1px);
+}
+.webuploader-pick {
+	position: relative;
+	display: inline-block;
+	height:144px;
+	width:140px;
+	cursor: pointer;
+	background: #fff;
+	color: #ccc;
+	text-align: center;
+	border-radius: 3px;
+	overflow: hidden;
+	border: 1px solid #ccc;
+	line-height: 140px;
+	background: #fff url(../images/add.png) no-repeat;
+	background-position: center;
+}
+
+.webuploader-list {
+	position: relative;
+	display: inline-block;
+	height:148px;
+	background: #fff;
+	color: #ccc;
+	text-align: center;
+	border-radius: 3px;
+	overflow: hidden;
+	border: 0px solid #ccc;
+	background-position: center;
+}
+
+.webuploader-pick-hover {
+	border: 1px solid #1092f2;
+}
+.webuploader-pick-disable {
+	opacity: 0.6;
+	pointer-events:none;
+}
+
+
+.file-item {
+    float: left;
+    position: relative;
+    margin: 4px 10px 10px 0;
+    background-color:#eee;
+    padding: 1px;
+    height:144px;
+    min-width:140px;
+    border: 1px solid #ccc;
+}
+
+.file-item img{
+	width:138px;
+	height:140px;
+}
+.opa {
+    opacity:0.6;
+}
+.file-item .error {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    right: 4px;
+    background: red;
+    color: white;
+    text-align: center;
+    height: 20px;
+    font-size: 14px;
+    line-height: 23px;
+}
+
+.file-item .del:after {
+	 background: white;
+    content:"\f00d";
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 18px;
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    color: red;
+    cursor:pointer;
+    z-index: 99;
+}
+
+.file-item .info {
+    position: absolute;
+    left: 1px;
+    bottom: 1px;
+    right: 1px;
+    height: 40px;
+    line-height: 40px;
+    text-indent: 5px;
+    color: white;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow : ellipsis;
+    font-size: 20px;
+    z-index: 10;
+    text-align: left;
+    display: none;
+}
+.file-item .info div{
+	 background: rgba(0, 0, 0, 0.6);
+	display: inline-block;
+	cursor: pointer;
+	border-right: 1px solid #aaa;
+	text-align: center;
+	padding: 0;
+	margin: 0;
+}
+
+.file-item .info div:hover{
+	background: rgba(0, 0, 0, 0.50);
+}
+.file-item .info div .fa{
+	display: inline;
+	padding-right: 3px;
+}
+
+.upload-state-done:after {
+    content:"\f00c";
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 32px;
+    position: absolute;
+    bottom: 0;
+    right: 4px;
+    color: #4cae4c;
+    z-index: 99;
+}
+.file-item .progress {
+    position: absolute;
+    right: 10px;
+    bottom: 65px;
+    height: 3px;
+    left: 10px;
+    height: 4px;
+    overflow: hidden;
+    z-index: 15;
+    margin:0;
+    padding: 0;
+    border-radius: 0;
+    background: transparent;
+}
+.file-item .ininin {
+	 position: absolute;
+    right: 1px;
+    bottom: 45px;
+    left: 1px;
+    overflow: hidden;
+    z-index: 15;
+    margin:0;
+    padding: 0;
+    border-radius: 0;
+    background: transparent;
+    color:red;
+}
+.file-item .progress span {
+    display: block;
+    overflow: hidden;
+    width: 0;
+    height: 100%;
+    background: #1483d8 url(../images/progress.png) repeat-x;
+    -webit-transition: width 200ms linear;
+    -moz-transition: width 200ms linear;
+    -o-transition: width 200ms linear;
+    -ms-transition: width 200ms linear;
+    transition: width 200ms linear;
+    -webkit-animation: progressmove 2s linear infinite;
+    -moz-animation: progressmove 2s linear infinite;
+    -o-animation: progressmove 2s linear infinite;
+    -ms-animation: progressmove 2s linear infinite;
+    animation: progressmove 2s linear infinite;
+    -webkit-transform: translateZ(0);
+}
+
+
+@-webkit-keyframes progressmove {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 17px 0;
+    }
+}
+@-moz-keyframes progressmove {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 17px 0;
+    }
+}
+@keyframes progressmove {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 17px 0;
+    }
+}
+
+a.travis {
+  position: relative;
+  top: -4px;
+  right: 15px;
+}
+

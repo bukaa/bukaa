@@ -1,0 +1,135 @@
+body,p{
+	margin: 0;
+	font-family: 微软雅黑;
+}
+label{
+	color: #aaaaaa;
+	font-size: 14px;
+}
+.lay-login{
+	width: 100%;
+	position: fixed;
+	background: rgba(22,22,22,0.3);
+	top:0;
+}
+.lay-login>div{
+	height: 364px;
+	width: 618px;
+	position: fixed;
+	top:50%;
+	left: 50%;
+	margin-top: -182px;
+	margin-left: -309px;
+	background-color: #ffffff;
+}
+.close{
+	width: 47px;
+	height: 50px;
+	float: right;
+}
+.close>div{
+	width: 47px;
+	height: 20px;
+	background: url("../images/login.png") no-repeat 0 -20px;
+	cursor: pointer;
+	margin-left: 0;
+	float: left;
+}
+.close>div:hover{
+	background: url("../images/login.png") no-repeat 0 -44px;
+}
+.main{
+	margin-top: 50px;
+	height: 314px;
+}
+.main>p:first-child{
+	font-size: 20px;
+	height: 26px;
+	margin-bottom: 16px;
+	text-align: center;
+
+}
+.main>p.welcome{
+	margin-bottom: 36px;
+	font-size: 16px;
+	color: #666666;
+	text-align: center;
+
+}
+.username,.password{
+	height: 55px;
+	width: 272px;
+	margin-left:auto ;
+	margin-right: auto;
+}
+.username>div,.password>div {
+	border: 1px solid #d6d6d6;
+	border-radius: 5px;
+	overflow: hidden;
+}
+.username>div.active,.password>div.active{
+	border: 1px solid #86ce2f;
+}
+
+.username input,.password input{
+	line-height: 18px;
+	padding: 11px 0 11px 0px;
+	width: 234px;
+	font-family: Verdana,Tahoma,Arial;
+	font-size: 16px;
+	float: right;
+	border: none;
+	outline: none;
+}
+.u-logo,.p-logo{
+	width: 21px;
+	height: 24px;
+	float: left;
+	text-align: center;
+	padding: 0 5px 0 10px;
+}
+.u-logo>div{
+	background:url("../images/login.png") no-repeat  -232px 0;
+	display: inline-block;
+	width: 22px;
+	height: 24px;
+	margin-top: 10px;
+}
+.p-logo>div{
+	background:url("../images/login.png") no-repeat  -273px 0;
+	display: inline-block;
+	width: 22px;
+	height: 24px;
+	margin-top: 10px;
+}
+.submit{
+	position: relative;
+	height: 40px;
+	background-color: #86ce2f;
+	width: 272px;
+	margin:  0 auto;
+}
+.submit>input{
+	width: 272px;
+	height: 40px;
+	line-height: 35px;
+	border: 0;
+	font-size: 17px;
+	font-weight: normal;
+	font-family: "Microsoft Yahei","微软雅黑",SimHei,"黑体","Hiragino Sans GB",STHeiTi,sans-serif;
+	color: #fff;
+	background: transparent;
+	cursor: pointer;
+
+}
+.signup{
+	float: right;
+	margin-right: 174px;
+	margin-top: 15px;
+	font-size: 12px;
+	color: #aaaaaa;
+	text-decoration: none;
+}
+input:-ms-input-placeholder {
+	color: #a9a9a9 !important;
+}

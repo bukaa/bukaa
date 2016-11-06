@@ -1,0 +1,23 @@
+@CHARSET "UTF-8";
+
+.dic {
+	background:url(../images/dic.png) center left no-repeat;
+	padding-left:28px;
+}
+
+.dic-check-td {
+	width:30px;
+	text-align:center;
+}
+
+.dic-check-td input{
+	vertical-align:-10%;
+}
+
+.selected-item {
+	background-color:#eaeaea;
+}
+
+table tr.selected-item:hover {
+	background-color:#eaeaea;
+}

@@ -1,0 +1,72 @@
+
+h1,h2,h3,h4,h5,h6 {font-weight: 100;}
+
+h1 {font-size: 30px;}
+
+h2 { font-size: 24px;}
+
+h3 {font-size: 16px;}
+
+h4 {font-size: 14px;}
+
+h5 { font-size: 12px;}
+
+h6 {font-size: 10px;}
+
+h3,h4,h5 {margin-top: 5px;font-weight: 600;}
+
+a:focus {outline: none;}
+
+a:hover{text-decoration: none;color: none;}
+
+div,span,p,h1,h2,h3,h4,h5,h6{margin: 0;padding: 0;}
+
+.content_box{margin-left: auto;margin-right: auto;width: 1000px;overflow: hidden;margin-top: 20px;}
+.zt,.bm{border: 1px solid #CCCCCC;padding-top: 10px;position:relative;}
+.zt>span,.bm>span{font-size: 14px;font-weight: bold;vertical-align: top;display: inline-block;margin-left: 20px;padding: 3px;}
+ .zt ul {width: 795px;display: inline-block;padding-left: 0;overflow: hidden;margin: 0;padding: 0;} 
+.zt ul li{float: left;list-style: none;margin: 0 1px;font-size: 14px;border: 1px solid #fff;padding: 2px 5px;}
+.zt ul li:hover{border:1px solid #109EFF;cursor: pointer;}
+.bm ul li:hover{border:1px solid #109EFF;cursor: pointer;}
+.bm ul {width: 795px;height: 29px;display: inline-block;padding-left: 0;overflow: hidden;margin: 0;padding: 0;}
+.bm ul li{float: left;list-style: none;margin: 0 1px;font-size: 14px;border: 1px solid #fff;padding: 2px 5px;}
+.zt .btn,.bm .btn{margin-top: -13px;color: #333;font-size: 13px;padding: 0 12px;}
+.zt .btn{position: absolute;top: 26px;right:50px;}
+.bm .btn{position: absolute;top:27px;right:50px;}
+.zt .btn:hover{color: #1092F2;}
+.bm .btn:hover{color: #1092F2;}
+
+
+.data{margin: 10px 0;padding-left: 20px;}
+.data p{display: inline-block;height: 25px;font-size: 12px;line-height: 25px;color: #999;}
+.data .data_text{display: inline-block;border: 1px solid #1092f2;font-size: 12px;padding: 3px 5px;margin-left: 5px;}
+
+
+
+.content_box_left{width: 100%;float: left;padding: 10px 0;}
+.content_box_right{width: 300px;height: 500px;float: left;}
+.xq{width: 100%;border: 1px solid #CCCCCC;}
+.xq>p{padding: 8px 20px;color: #999;}
+.xq .xianqing{margin:5px  5px 10px  5px;border: 1px solid #ccc;}
+
+
+
+.xq .mg{margin:30px  5px 10px  5px;border: 1px solid #ccc;}
+.class_pic{
+	width: 60px; height: 50px; 
+	position: relative; float: left;
+	background: url(../images/1-1.png) no-repeat;
+	background-size:contain;
+	}
+.txt{margin-top: 20px;margin-left: 62px;overflow: hidden;}
+.txt a{font-size: 16px;font-weight: bold;float: left;color: #000000;letter-spacing:2px}
+.txt a:hover{color: #337AB7;}
+.txt span{float: right;padding-right: 76px}
+.txt1{margin-top: 18px;margin-left: 62px;overflow: hidden;margin-bottom: 38px;}
+.txt1 a{float: left;color: #666;}
+.txt1 span{float: right;display: inline-block;padding:2px 10px;margin: 0 5px;color: #fff;}
+.txt1 span:hover{opacity: 0.8;cursor: pointer;}
+.txt1 .s1{background: #999;margin-right: 82px;}
+.txt1 .s2{background: #1092F2;}
+.s1 a{text-decoration:none;color:#fff}
+.s1 a:hover{text-decoration:none;}

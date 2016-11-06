@@ -1,0 +1,224 @@
+body{
+	margin: 0;
+	background-color: #f5f5f5;
+	font-family: "Microsoft Yahei", "微软雅黑", SimHei, "黑体", "Hiragino Sans GB", STHeiTi, sans-serif;
+}
+#comment-more {
+	width: 125px;
+	height: 30px;
+	display: block;
+	text-align: center;
+	line-height: 30px;
+	margin: 15px auto 60px;
+	background: #f5f5f5;
+	border: 1px solid #c4c4c4;
+}
+#comment-more a:focus,#comment-more a:visited,#comment-more a:active{
+	color: #333;
+	text-decoration: none;
+}
+.nav2{
+	width: 1000px;
+	margin-left: auto;
+	margin-right: auto;
+}
+.nav2>div{
+	width: 273px;
+	border-radius: 15px;
+	border: none;
+	outline: medium;
+	padding-left: 15px;
+	overflow: hidden;
+	background-color: #ffffff;
+	margin-top: 25px;
+
+}
+.nav2>div>input{
+	width: 215px;
+	height: 30px;
+	border-radius: 15px;
+	border: none;
+	outline: medium;
+	padding-left: 15px;
+	float: left;
+}
+.nav2>div span{
+	float: right;
+	cursor: pointer;
+	margin-right: 20px;
+	margin-top: 4px;
+}
+.search-container{
+	width: 1000px;
+	height: 338px;
+
+	margin: 34px auto 14px;
+	background-color: #ffffff;
+}
+.left,.right{
+	padding: 15px;
+	float: left;
+}
+
+.image{
+	padding: 14px;
+	background-color: #efefef;
+	width: 102px;
+	height: 101px;
+	border-radius: 15px;
+}
+.image>img{
+	width: 75px;
+	height: 75px;
+}
+.downBt{
+	display: block;
+	width: 93px;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+	color: #fff;
+	background-color: #5cb85c;
+	border-color: #4cae4c;
+	font-size: 14px;
+	border-radius: 5px;
+	margin-top: 7px;
+	margin-left: 5px;
+	cursor: pointer;
+
+}
+.downBt:hover{
+	color: #fff;
+	background-color: #449d44;
+	border-color: #398439;
+}
+.box-left,.box-right{
+	float: left;
+}
+.box-right{
+	margin-left: 20px;
+	font-size: 12px;
+	color: #999999;
+}
+.yingyongtittle{
+	font-size: 18px;
+	color: #333;
+}
+.xiazai{
+	margin-top: 6px;
+	line-height: 26px;
+	height: 26px;
+}
+.downdetails{
+	height: 25px;
+	line-height: 25px;
+	width: 355px;
+	border-bottom: 1px solid #e5e5e5;
+	padding: 0 0 2px;
+	margin: 0;
+}
+.yyjianjie{
+	height: 44px;
+	width: 355px;
+	overflow: hidden;
+	padding: 10px 5px;
+}
+.star-box{
+	margin-top: 25px;
+}
+.star-box .star{
+	width: 60px;
+	display: inline-block;
+	height: 10px;
+	vertical-align: middle;
+	margin: 0 5px 0 0;
+	overflow: hidden;
+}
+.one>.star{
+
+	background: url("../images/xiaostar.png") no-repeat -48px 0;
+}
+.two>.star{
+	background: url("../images/xiaostar.png") no-repeat -36px 0;
+}
+.three>.star{
+	background: url("../images/xiaostar.png") no-repeat -24px 0;
+}
+.four>.star{
+	background: url("../images/xiaostar.png") no-repeat -12px 0;
+}
+.five>.star{
+	background: url("../images/xiaostar.png") no-repeat ;
+}
+.zongfen>.star{
+	background: url("../images/star.png") no-repeat 0 -15px;
+	height: 15px;
+	width: 95px;
+}
+.p-bar{
+	background-color: #ffc46f;
+	margin:0 5px;
+	height: 9px;
+	display: inline-block;
+}
+.imgsbox{
+	overflow: hidden;
+	width: 460px;
+	border: 1px solid #e5e5e5;
+	padding: 5px;
+	position: relative;
+}
+.imgs{
+	width: 3000px;
+}
+.imgs>.img{
+	height: 280px;
+	width: 214px;
+	margin: 0 5px;
+}
+.imgsbox .leftBt,.imgsbox .rightBt{
+	cursor: pointer;
+	position: absolute;
+	width: 27px;
+	height: 27px;
+	top: 50%;
+	margin-top: -13px;
+	display: none;
+}
+.imgsbox .leftBt{
+	background: url("../images/smallarrow.png") no-repeat -28px 0;
+	left: 0;
+}
+.imgsbox .leftBt:hover{
+	background: url("../images/smallarrow.png") no-repeat 0 0;
+}
+.imgsbox .rightBt{
+	background: url("../images/smallarrow.png") no-repeat -28px -28px;
+	right: 0;
+}
+.imgsbox .rightBt:hover{
+	background: url("../images/smallarrow.png") no-repeat 0 -28px;
+}
+.prevStop{display: none;}
+.nextStop{display: none;}
+.search-container>.noresult{
+	float: left;
+	margin-top: 130px;
+	margin-left: 30px;
+}
+.search-container>.noresultimg{
+	background: url("../images/noresult.png");
+	width: 227px;
+	height: 227px;
+	opacity: 0.4;
+	margin-left: 200px;
+	margin-top: 45px;
+	float: left;
+}
+.search-container>.noresult span{
+	color: #aaaaaa;
+	font-size: 24px;
+}
+.search-container>.noresult .searchKey{
+	color: #333;
+}

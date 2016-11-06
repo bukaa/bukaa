@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>登录</title>
+	<link href="../css/lay-login.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div class="lay-login">
+	<div>
+		<div class="close">
+			<div></div>
+		</div>
+		<div class="main">
+			<p>登录账号</p>
+			<p class="welcome">欢迎使用IRS信息资源服务平台</p>
+			<div class="username">
+				<div>
+					<div class="u-logo">
+						<div></div>
+					</div>
+					<input type="text" title="用户名" placeholder="请输入用户名/邮箱/手机号码">
+				</div>
+			</div>
+			<div class="password">
+				<div >
+					<div class="p-logo">
+						<div></div>
+					</div>
+					<input type="password" title="密码" placeholder="请输入密码">
+				</div>
+			</div>
+			<div class="submit">
+				<input type="submit" value="登录">
+			</div>
+			<a class="signup" href="">注册账号</a>
+		</div>
+	</div>
+</div>
+<script src="../../../static/lib/jquery/jquery.min.js"></script>
+
+<script>
+	window.onload=function (){
+		heig = document.documentElement.clientHeight;
+		document.getElementsByClassName("lay-login")[0].style.height = heig + 'px' ;
+	};
+	var loginInput = $('.lay-login input');
+	loginInput.focus(function(){
+		$(this).parent('div').addClass("active");
+	});
+	loginInput.blur(function(){
+		$(this).parent('div').removeClass("active");
+	});
+	$(".close>div").click(function(){
+		$('.lay-login').hide();
+	})
+</script>
+</body>
+</html>

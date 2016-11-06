@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd"
+    version="2.0">
+    <description>ssjPurview.tld标签库</description>
+	<tlib-version>2.0</tlib-version>
+	<short-name>ssjPv</short-name>
+	<uri>ssjPvtld</uri>
+	<tag>
+    	<description>随手记权限控制标签，根据操作id或操作标识来控制操作的访问权限</description>
+		<name>hasPurView</name>
+		<tag-class>sundun.zfpt.gg.tag.SsjHavePuriveTag</tag-class>
+		<body-content>JSP</body-content>
+		<attribute>
+    		<description>操作Id</description>
+			<name>operId</name>
+			<required>false</required>
+		</attribute>
+		<attribute>
+    		<description>操作标识</description>
+			<name>operMark</name>
+			<required>false</required>
+		</attribute>
+		<attribute>
+    		<description>案件编号</description>
+			<name>ajbh</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue><!-- 支持EL表达式 -->  
+		</attribute>
+	</tag>
+</taglib>

@@ -1,0 +1,130 @@
+.box{
+	width: 100%;
+	background-color: #ffffff;
+}
+.head{
+	width: 1000px;
+	margin-left:  auto;
+	margin-right: auto;
+	padding-top: 20px;
+}
+span.logo{
+	width: 320px;
+	height: 50px;
+	background:url("../images/SUQIANlogo.png");
+	display: inline-block;
+	margin-bottom: -3px;
+}
+.search{
+	display: inline-block;
+	vertical-align: bottom;
+	margin-bottom: 7px;
+	margin-left: 5%;
+
+}
+.search span{
+	border-radius: 5px;
+	border: 1px #000000 solid;
+	display: inline-block;
+	vertical-align: top;
+	text-align: right;
+}
+.search input.text{
+	height: 33px;
+	min-width: 296px;
+	border: none;
+	outline: none;
+
+}
+.search button.button{
+	height: 37px;
+	border-radius:0 5px 5px 0;
+	background: #000000;
+	color: #ffffff;
+	border: none;
+}
+.search button.button:hover{
+	background-color: #3e3e3e;
+}
+.search button.button:active{
+	background-color: #232323;
+}
+.choose{
+	height: 37px;
+	border: 0;
+	border-right: 1px #a9a9a9 solid ;
+	cursor: pointer;
+	width:82px;
+	margin-left: 2px;
+	background-color: #f3f3f3;
+	outline: none;
+}
+.login{width: 100% ;height:32px;margin: auto;background: #eeedef;}
+.login>div{width: 1000px ;height:32px;margin: auto;}
+
+
+.login>div div{line-height: 32px;color: #2f2e2e;display: inline-block;font-size: 12px;float: right;}
+.a2{position: relative;margin-left: 20px;width: 128px;text-align: center;}
+.a2 img{margin-left: 5px;}
+.a2 ul{font-size: 12px;list-style: none;margin: 0;padding: 0;display: none;width: 128px;z-index: 1;}
+
+.login div span:hover{color: blue;cursor: pointer;}
+.login .a2:hover{background:#fff;}
+.login .a2:hover ul{background:#f1f1f1;color: black;display: block;cursor: pointer;} 
+.login .a2 ul li a{color: black;}
+.login .a2 ul li img{width: 50px;height: 50px;display: inline-block;border-radius: 50%;}
+.login .a2 ul li:hover{background: #fff;}
+
+
+
+
+
+
+div.nav{background: #1092f2;margin: 20px 0  0;}
+div.nav>ul.nav{margin-left: 24%}
+ul.nav > li > a{color: #fff;font-weight: 700}
+.sort ul.nav > li > a{color:#333;font-weight: 500;}
+ul.nav-tabs > li > a{color:#333;}
+ul.nav > li > a.active{
+	background-color: #109eff;
+	color: #ffffff;
+}
+ul.nav > li > a:focus, ul.nav > li > a:hover{
+	background-color: #109eff;
+	color: #ffffff;
+}
+
+.copyRight{
+	background-color: #f4f4f4;
+	float: left;
+	height: 110px;
+	width: 100%;
+	bottom: 0;
+}
+.copyRight>div{
+	color: #333;
+	font-size: 12px;
+	width: 980px;
+	margin: 0 auto;
+	text-align: center;
+	padding-top: 50px;
+}
+.copyRight>div p{
+	width: 420px;
+	margin-left: auto;
+	margin-right: auto;
+	white-space: nowrap;
+	overflow: hidden;
+}
+.copyRight>div a{
+	color: #333;
+	display: inline-block;
+	padding: 0 47px;
+	border-left: 1px solid #aaaaaa;
+	margin-left: -1px;
+}
+.shrink {
+	overflow: hidden;
+	text-overflow:ellipsis;
+	white-space: nowrap;
+}

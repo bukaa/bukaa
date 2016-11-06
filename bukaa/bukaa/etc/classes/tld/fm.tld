@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd"
+    version="2.0">
+    <description>fm.tld标签库</description>
+	<tlib-version>2.0</tlib-version>
+	<short-name>fm</short-name>
+	<uri>fmtld</uri>
+	<tag>
+    	<description>模板处理标签，解析模板中包含的Obj对象，处理会话、请求参数、表单变量、日期、替换、填充、审批节点等对象。</description>
+		<name>template</name>
+		<tag-class>sundun.rdp.tag.TemplateTag</tag-class>
+		<body-content>JSP</body-content>
+	</tag>
+</taglib>

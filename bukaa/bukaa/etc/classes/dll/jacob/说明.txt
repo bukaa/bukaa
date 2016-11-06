@@ -1,0 +1,12 @@
+---
+Jacob-1.14.3安装
+---
+
+下载地址：http://sourceforge.net/projects/jacob-project/files/jacob-project/1.14.3/
+如果服务器是64位，请使用jacob-1.14.3-x64.dll
+如果服务器是32位，请使用jacob-1.14.3-x86.dll
+
+把jacob-1.14.3.zip中的dll文件解压在以下目录中的的任意一个
+java.library.path = [jdk路径]/bin;[tomcat路径]/bin
+
+现在，约定将dll文件解压在[tomcat路径]/bin

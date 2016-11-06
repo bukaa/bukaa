@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans    
+						http://www.springframework.org/schema/beans/spring-beans-4.0.xsd    
+                        http://www.springframework.org/schema/context    
+                        http://www.springframework.org/schema/context/spring-context-4.0.xsd    
+                        http://www.springframework.org/schema/tx 
+                        http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+                        http://www.springframework.org/schema/aop
+						http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+                        http://www.springframework.org/schema/mvc    
+                        http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">  
+	<!-- 自动扫描 -->
+	<context:component-scan base-package="cn.bukaa.service.*"/>
+	
+	<!-- 引入配置文件 -->
+	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">  
+	    <property name="locations">  
+	    	<list>  
+	          	<value>classpath*:/application.properties</value>
+	    	</list>  
+	    </property>  
+	</bean>
+	
+	<!-- 数据源配置 -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="${jdbc.driver}"/>
+		<property name="url" value="${jdbc.url}"/>
+		<property name="username" value="${jdbc.username}"/>
+		<property name="password" value="${jdbc.password}"/>
+		<property name="initialSize" value="${jdbc.initialSize}"/>
+		<property name="maxActive" value="${jdbc.maxActive}"/>
+		<property name="maxIdle" value="${jdbc.maxIdle}"/>
+		<property name="minIdle" value="${jdbc.minIdle}"/>
+		<property name="maxWait" value="${jdbc.maxWait}"/>
+	</bean>
+	
+	<!-- Spring和MyBatis整合 -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"/>
+		<property name="mapperLocations" value="classpath:mapper/**/*.xml"/>
+		<property name="plugins">
+			<array>
+				<bean class="com.github.pagehelper.PageHelper">
+					<property name="properties">
+						<value>
+							pageSizeZero = true
+						</value>
+					</property>
+				</bean>
+			</array>
+		</property>
+	</bean>
+	
+	<!-- DAO接口所在包
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="sundun.portal.mapper"/>
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+	</bean> -->
+	
+	<!-- 持久化模板SqlSessionTemplate注入 -->
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+	  	<constructor-arg index="0" ref="sqlSessionFactory" />
+	</bean>
+	
+	<!-- 基础Dao的SqlSession注入 -->
+	<bean id="baseDao" class="sundun.core.bll.orm.mybatis.BaseDao">
+	  	<property name="sqlSession" ref="sqlSession" />
+	</bean>
+	
+	<!-- DAO接口所在包
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="sundun.core.bll.orm.mybatis.mapper"/>
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+	</bean> -->
+	
+	<!-- 事件管理 -->
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+	
+	<!-- 使用annotation定义事务 	-->
+	<tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true" order="999" />
+	
+	<!-- 定义声明式事务 -->
+    <tx:advice id="txAdvice" transaction-manager="transactionManager">
+          <tx:attributes>           
+             <tx:method name="get*Data" read-only="true" propagation="SUPPORTS"/>
+             <tx:method name="find*" read-only="true" propagation="SUPPORTS"/>
+             <tx:method name="save*" propagation="REQUIRED" rollback-for="Exception" />
+             <tx:method name="update*" propagation="REQUIRED" rollback-for="Exception" />
+             <tx:method name="delete*" propagation="REQUIRED" rollback-for="Exception" />
+             <tx:method name="execute*" propagation="REQUIRED" rollback-for="Exception" />
+             <tx:method name="synch*" propagation="REQUIRED" rollback-for="Exception" />
+             <tx:method name="init*" propagation="REQUIRED" rollback-for="Exception" />
+         </tx:attributes>
+     </tx:advice>
+     
+     <aop:config proxy-target-class="true">
+     	<aop:pointcut expression="execution(public * sundun..*.service.*Service.*(..))" id="txServicePoint"/>	       	          	   	     	
+     	<aop:advisor advice-ref="txAdvice" pointcut-ref="txServicePoint" order="1000"/>
+     </aop:config>
+</beans>

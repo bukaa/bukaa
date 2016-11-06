@@ -1,0 +1,143 @@
+@CHARSET "UTF-8";
+
+/**********************************
+ *********字典控件****************
+ **********************************/
+.dic {
+	background:url(data_05.png) no-repeat 3px center;
+	padding-left:25px;
+}
+
+.el-dialog {
+    position:absolute;
+    background: rgba(14,144,210, 1);
+    color: #000;
+    width: 100%;
+    padding:0;
+    font-size: 12px;    
+    border:1px solid #0866c6;
+    box-shadow: 0 0 8px rgba(0,0,0,0.6);
+    display: none;
+    z-index: 1000001;
+    -webkit-transition: 0.3s ease;
+    -moz-transition: 0.3s ease;
+    pointer-events: auto;
+}
+.el-dialog div{
+    width:100%;
+    height:100%;
+    position: relative;
+}
+.el-dialog div:after {
+    position: absolute;
+    opacity: 1;
+    z-index: 1000000;
+    -webkit-transition: 0.3s ease;
+    -moz-transition: 0.3s ease;
+    pointer-events: auto;
+}
+.el-dialog div:after {
+    content: '';
+    position: absolute;
+    background: transparent;
+    border: 6px solid transparent;
+    top: -12px;
+    left: 50%;
+    margin: 0 0 0 0;
+    border-bottom-color: rgba(8,102,198, 1);
+}
+.el-dialog table{
+    width: 100%;
+    margin:0;
+    padding: 0;
+    background: #fff;
+}
+.el-dialog table tr.even{
+    background: #f4f4f4;
+}
+.el-dialog table tr:hover{
+    background: #d8d9d9;
+}
+.el-dialog table td{
+    line-height: 28px;
+    padding: 0;
+    border-top: 1px solid #dddddd;
+    cursor: pointer;
+}
+.table-bordered tbody:first-child tr:first-child td .el-dialog td {
+    border-top: 1px solid #dddddd;
+}
+.el-dialog table td label{
+    margin: 0 8px;
+    cursor: pointer;
+}
+.el-dialog table tfoot{
+    background: #e1e2e2;
+}
+.el-dialog table tfoot tr:hover{
+    background: none;
+    cursor: default;
+}
+.el-dialog table tfoot td{
+    cursor: default;
+    height: 30px;
+}
+.el-dialog table tfoot .btn{
+    height:24px;
+    line-height:24px;
+    font-size:12px;
+    padding:0 8px;
+    margin: 3px 0 0 5px;
+    border-radius:3px;
+    background:#CCC;
+    color: #0f1214;
+    text-shadow:0 1px 0 #fff;
+    border:1px solid #bbb;
+    background: -webkit-linear-gradient(top,#ffffff,#ccc);
+    background: -moz-linear-gradient(top,#f6f6f6,#2f363d);
+    background: -ms-linear-gradient(top,#f6f6f6,#d9d9d9);
+    background: -o-linear-gradient(top,#f6f6f6,#d9d9d9);
+    background: linear-gradient(top,#f6f6f6,#d9d9d9);
+    outline: none;
+    cursor: pointer;
+}
+.el-dialog table tfoot .cannel{
+    float: right;
+    margin: 3px 5px 0 0;
+}
+.el-dialog table tfoot .delete{
+    float: right;
+    margin: 3px 5px 0 0;
+}
+
+.el-dialog table tfoot .first{
+    float: right;
+    margin: 3px 5px 0 0;
+}
+
+.el-dialog table tfoot .prev{
+    float: right;
+    margin: 3px 5px 0 0;
+}
+
+.el-dialog table tfoot .next{
+    float: right;
+    margin: 3px 5px 0 0;
+}
+.el-dialog label{
+	font-weight: normal;
+}
+
+.el-dialog table tfoot .last{
+    float: right;
+    margin: 3px 5px 0 0;
+}
+
+.el-dialog .page-container-num span{
+	color: tomato;
+}
+
+/**********************************
+ *********隐藏IE浏览器自带的文本删除按钮和密码查看按钮****************
+ **********************************/
+::-ms-clear,::-ms-reveal{display:none;}

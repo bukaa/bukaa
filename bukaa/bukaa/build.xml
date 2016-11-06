@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="bukaa" basedir="." default="help">
+	<property name="webapp.name" value="bukaa" />
+	<property name="build.dir" value="${basedir}/WebRoot/WEB-INF" />
+	<property name="src.dir" value="${basedir}/src" />
+	<property name="war.dir" value="${basedir}/war" />
+	<property name="etc.dir" value="${basedir}/etc" />
+	<property name="lib.dir" value="${basedir}/lib" />
+	<property name="web.dir" value="${basedir}/WebRoot" />
+	<property name="encode.dir" value="${basedir}/etc/classes" />
+	<property name="dest.dir" value="${basedir}/dest" />
+
+	<property environment="env" />
+	<property name="tomcat.home" value="I:\tomcat\tomcat\tomcat_bukaa" />
+
+	<path id="classpath">
+		<fileset dir="${lib.dir}">
+			<include name="*.jar" />
+		</fileset>
+		<fileset dir="${tomcat.home}/lib">
+			<include name="*.jar" />
+		</fileset>
+		<pathelement path="${build.dir}/classes" />
+	</path>
+
+	<path id="buildclasspath">
+		<path refid="classpath" />
+		<fileset dir="${buildlib.dir}">
+			<include name="*.jar" />
+		</fileset>
+	</path>
+
+	<!-- ==================================================================== -->
+	<!-- The "help" target is used to display the helping message  -->
+	<!-- ==================================================================== -->
+	<target name="help" description="打印ANT功能目录">
+		<echo message="Print this screen" />
+		<echo message="${webapp.name} build file" />
+		<echo message="-----------------------------------" />
+		<echo message="" />
+		<echo message="Available targets are:" />
+		<echo message="" />
+		<echo message="help 		--> 帮助菜单" />
+		<echo message="printVar 	--> 打印build.xml相关变量" />
+		<echo message="compile  	--> 编译所有Java文件" />
+		<echo message="deploy  		--> 将项目部署到Tomcat" />
+		<echo message="makewar 		--> 将项目打包成war文件" />
+		<echo message="clean  		--> 清除输出文件夹" />
+	</target>
+
+	<target name="printVar" description="打印build.xml变量">
+		<echo message="项目名称：${webapp.name}" />
+		<echo message="源代码路径：${basedir}" />
+		<echo message="tomcat主目录：${tomcat.home}" />
+		<echo message="tomcat主目录部署目录：${tomcat.home}\webapps\${webapp.name}" />
+		<echo message="war包主目录部署目录：${war.dir}" />
+	</target>
+	
+	<!-- ==================================================================== -->
+	<!-- The "Compile" target is used to compile project and copy the -->
+	<!-- Hibernate configuration file to the proper direction.  -->
+	<!-- ==================================================================== -->
+	<target name="compile" description="编译JAVA源文件">
+		<mkdir dir="${build.dir}/classes" />
+		<javac destdir="${build.dir}/classes" target="1.6" source="1.6" debug="true" deprecation="true"
+			optimize="false" failonerror="true" includeantruntime="on">
+			<src path="${src.dir}" />
+			<classpath refid="classpath" />
+			<compilerarg line="-encoding UTF-8 "></compilerarg>
+		</javac>
+		<echo message="编译JAVA源文件完成" />
+	</target>
+
+	<!-- The "deploy" target is used to deploy project and copy the -->
+	<!-- configuration file to the tomcat container. -->
+	<target name="deploy" depends="compile" description="部署WEB应用到Tomcat">
+		<!-- Copy the web file -->
+		<copy todir="${tomcat.home}/webapps/${webapp.name}" preservelastmodified="true">
+			<fileset dir="${web.dir}">
+				<include name="**/*.*" />
+				<exclude name="classes/*.*" />
+				<exclude name="META-INF/*.*" />
+			</fileset>
+		</copy>
+		<!-- Copy the class file -->
+		<copy todir="${tomcat.home}/webapps/${webapp.name}/WEB-INF/classes" preservelastmodified="true">
+			<fileset dir="${build.dir}/classes">
+			</fileset>
+		</copy>
+		<!-- Copy the META-INF file -->
+		<copy todir="${tomcat.home}/webapps/${webapp.name}/WEB-INF/classes/META-INF" preservelastmodified="true">
+			<fileset dir="${web.dir}/META-INF">
+			</fileset>
+		</copy>
+		<!-- Copy the lib file -->
+		<copy todir="${tomcat.home}/webapps/${webapp.name}/WEB-INF/lib" preservelastmodified="true">
+			<fileset dir="${lib.dir}">
+				<exclude name="**/readme.txt" />
+				<exclude name="**/jsp-api.jar" />
+				<exclude name="**/servlet-api.jar" />
+			</fileset>
+		</copy>
+		<!-- Copy the configuration file -->
+		<copy todir="${tomcat.home}/webapps/${webapp.name}/WEB-INF" preservelastmodified="true">
+			<fileset dir="${etc.dir}">
+				<exclude name="**/readme.txt" />
+				<exclude name="web/server.xml" />
+			</fileset>
+		</copy>
+		<echo message="部署WEB应用到Tomcat完成" />
+	</target>
+
+	<!-- makewar the web project -->
+	<target name="makewar" depends="compile" description="WEB应用打包成WAR文件">
+		<!-- Copy the web file -->
+		<copy todir="${dest.dir}/${webapp.name}" preservelastmodified="true">
+			<fileset dir="${web.dir}">
+				<include name="**/*.*" />
+				<exclude name="classes/*.*" />
+				<exclude name="META-INF/*.*" />
+			</fileset>
+		</copy>
+		<!-- Copy the class file -->
+		<copy todir="${dest.dir}/${webapp.name}/WEB-INF/classes" preservelastmodified="true">
+			<fileset dir="${build.dir}/classes">
+			</fileset>
+		</copy>
+		<!-- Copy the META-INF file -->
+		<copy todir="${dest.dir}/${webapp.name}/WEB-INF/classes/META-INF" preservelastmodified="true">
+			<fileset dir="${web.dir}/META-INF">
+			</fileset>
+		</copy>
+		<!-- Copy the lib file -->
+		<copy todir="${dest.dir}/${webapp.name}/WEB-INF/lib" preservelastmodified="true">
+			<fileset dir="${lib.dir}">
+				<exclude name="**/readme.txt" />
+			</fileset>
+		</copy>
+		<!-- Copy the configuration file -->
+		<copy todir="${dest.dir}/${webapp.name}/WEB-INF" preservelastmodified="true">
+			<fileset dir="${etc.dir}">
+				<exclude name="**/readme.txt" />
+			</fileset>
+		</copy>
+		<war compress="false" warfile="${war.dir}/bukaa.war" webxml="${dest.dir}/${webapp.name}/WEB-INF/web.xml">
+			<fileset dir="${dest.dir}/${webapp.name}">
+				<exclude name="**/web.xml"/>
+			</fileset>
+		</war>
+		<delete dir="${dest.dir}/${webapp.name}"/>
+		<echo message="WEB应用打包成WAR文件完成" />
+	</target>
+
+	<!-- ==================================================================== -->
+	<!-- The "clean" target is used to clean output directories -->
+	<!-- ==================================================================== -->
+	<target name="clean" description="清除输出目录（包括Tomcat目录和Classes目录）">
+		<delete dir="${build.dir}/classes" />
+		<delete file="${war.dir}/bukaa.war" />
+		<delete dir="${tomcat.home}/webapps/${webapp.name}" />
+		<echo message="清除输出目录（包括Tomcat目录和Classes目录）完成" />
+	</target>
+
+</project>
