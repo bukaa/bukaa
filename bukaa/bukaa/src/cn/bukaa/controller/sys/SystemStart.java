@@ -5,6 +5,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 
 import cn.bukaa.util.StringUtil;
+import cn.bukaa.util.redis.RedisClientSingle;
 
 /**
  * 
@@ -97,5 +98,6 @@ public class SystemStart extends HttpServlet{
 		{
 			System.setProperty("DISABLE_CACHE_PROPERTY","false");
 		}
+		RedisClientSingle.getInstance();
 	}
 }

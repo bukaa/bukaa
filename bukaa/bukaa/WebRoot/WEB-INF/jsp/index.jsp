@@ -21,7 +21,7 @@
 	                <ul class="nav" id="side-menu">
 	                    <li class="nav-header">
 	                        <div class="dropdown profile-element">
-	                            <span><img alt="image" class="img-circle" src="${ctx}/system/user/showImage.h?id=${user.id}" /></span>
+	                            <!-- <span><img alt="image" class="img-circle" src="${ctx}/system/user/showImage.h?id=${user.id}" /></span> -->
 	                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
 	                                <span class="clear">
 		                               	<span class="block m-t-xs"><strong class="font-bold">${user.loginId }</strong></span>
@@ -570,6 +570,5 @@
 		<script src="${ctx}/static/h+/4.1.0/js/plugins/metisMenu/jquery.metisMenu.js"></script>			
 		<script src="${ctx}/static/h+/4.1.0/js/hplus.js?v=4.1.0"></script>
 		<script src="${ctx}/static/h+/4.1.0/js/contabs.js"></script>
-		<script src="${ctx}/static/pro/js/index.js"></script>
 	</body>
 </html>

@@ -1,4 +1,9 @@
+clsCnt=18
 eclipse.preferences.version=1
-validator.Checked=WebRoot
+locCnt=1312
+pkgCnt=17
+sTime=2016\u5E7411\u67088\u65E5 \u661F\u671F\u4E8C \u4E0A\u534810\u65F613\u520648\u79D2 CST
+srcCnt=1
+validator.Checked=build.xml,autobuild.xml,WebRoot
 validator.Revalidate=true
 validator.Unchecked=

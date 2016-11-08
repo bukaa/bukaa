@@ -21,8 +21,6 @@
 <link href="${ctx}/static/h+/4.1.0/css/plugins/datapicker/datepicker3.css" rel="stylesheet">
 <link href="${ctx}/static/h+/4.1.0/css/animate.css" rel="stylesheet">
 <link href="${ctx}/static/h+/4.1.0/css/style.css?v=4.1.0" rel="stylesheet">
-<link href="${ctx}/static/pro/css/common.css" rel="stylesheet">
-<link href="${ctx}/static/pro/css/form.css" rel="stylesheet">
 
 <!--[if IE 6]>
 	<script type="text/javascript" src="${ctx}/static/lib/DD_belatedPNG_0.0.8a-min.js" ></script>

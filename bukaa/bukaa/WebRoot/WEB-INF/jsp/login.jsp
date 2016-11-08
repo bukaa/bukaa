@@ -9,11 +9,11 @@
 		<link href="${ctx}/static/h+/4.1.0/css/login.css" rel="stylesheet">
 		<title>神盾(RSF)平台</title>
 		<script type="text/javascript">
-			window.onload(functrion(){
+			$(function(){
 				var errorMessage = $("#errorMessage").val();
-				if(errorMessage != undefined &&　errorMessage　!= ""){
+				if(errorMessage != ""){
 					alert(errorMessage);
-				}				
+				}
 			});
 		</script>
 	</head>

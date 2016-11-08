@@ -19,7 +19,8 @@
 <link href="${ctx}/static/h+/4.1.0/css/font-awesome.css?v=4.4.0" rel="stylesheet">
 <link href="${ctx}/static/h+/4.1.0/css/animate.css" rel="stylesheet">
 <link href="${ctx}/static/h+/4.1.0/css/style.css?v=4.1.0" rel="stylesheet">
-<link href="${ctx}/static/pro/css/common.css" rel="stylesheet">
+
+<script src="${ctx}/static/h+/4.1.0/js/jquery.min.js?v=2.1.4"></script>
 
 <!--[if IE 6]>
 	<script type="text/javascript" src="${ctx}/static/lib/DD_belatedPNG_0.0.8a-min.js" ></script>

@@ -11,5 +11,3 @@
 <script type="text/javascript" src="${ctx}/static/h+/4.1.0/js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
 <script type="text/javascript" src="${ctx}/static/h+/4.1.0/js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
 <script type="text/javascript" src="${ctx}/static/h+/4.1.0/js/plugins/layer/layer.min.js"></script>
-<script type="text/javascript" src="${ctx}/static/lib/sd.form.js"></script>
-<script type="text/javascript" src="${ctx}/static/lib/sd.list.js"></script>

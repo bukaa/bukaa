@@ -1,9 +1,5 @@
 package cn.bukaa.util;
 
-import org.junit.Test;
-
-
-
 public class MD5 {
 
 	private static boolean hexcase = false; 
@@ -23,12 +19,6 @@ public class MD5 {
 	    bin[i>>5] |= (charCodeAt & mask) << (i%32);
 	  }
 	  return bin;
-	}
-	
-	@Test
-	public void test(){
-		System.out.println(hex_md5("123"));
-		System.out.println(getRandom(6));
 	}
 	
 	 public String getRandom(int length) {

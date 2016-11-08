@@ -16,6 +16,15 @@
 	<!-- 扫描@Controller注解类 -->
 	<context:component-scan base-package="cn.bukaa.controller.*"/>
 	
+	<!-- 引入配置文件 -->
+	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">  
+	    <property name="locations">  
+	    	<list>  
+	          	<value>classpath*:/redis.properties</value>
+	    	</list>  
+	    </property>  
+	</bean>
+	
 	<!-- 避免JSON下载 -->
 	<bean id="mappingFastJsonHttpMessageConverter" class="com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter">
 		<property name="supportedMediaTypes">
@@ -44,6 +53,10 @@
 		</property>
 	</bean>
 	
+	<!-- 静态文件 
+    <mvc:resources location="/assets/" mapping="/assets/**"></mvc:resources>
+     -->
+	
 	<!-- 页面跳转 -->
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/jsp/"/>
@@ -56,4 +69,44 @@
 		<property name="maxUploadSize" value="10485760000"/>
 		<property name="maxInMemorySize" value="40960"/>
 	</bean>
+	
+	<!-- 配置redis start -->
+     <bean id="poolConfig" class="redis.clients.jedis.JedisPoolConfig">  
+      	<property name="maxActive" value="${redis.maxActive}" />
+      	<property name="maxWait" value="${redis.maxWait}" />
+      	<property name="maxIdle" value="${redis.maxIdle}" />
+      	<property name="testOnBorrow" value="${redis.testOnBorrow}"/>
+      	<property name="testOnReturn" value="${redis.testOnReturn}"/>
+    </bean>
+    
+    <bean id = "shardedJedisPool" class="redis.clients.jedis.ShardedJedisPool">
+      	<constructor-arg index="0" ref="poolConfig"/>
+      	<constructor-arg index="1">  
+        	<list>  
+            	<bean class="redis.clients.jedis.JedisShardInfo">  
+                	<constructor-arg 
+                    	index="0" 
+                    	value="${redis.host}" />  
+                	<constructor-arg 
+                    	index="1" 
+                    	value="${redis.port}" 
+                    	type="int" />  
+               		<constructor-arg 
+                    	index="2" 
+                    	value="${redis.pass}" />  
+            	</bean> 
+            	<!-- 多台服务器时使用 -->
+            	<!-- <bean class="redis.clients.jedis.JedisShardInfo">  
+                <constructor-arg  
+                    index="0"  
+                    value="${redis2.ip}" />  
+                <constructor-arg  
+                    index="1"  
+                    value="${redis.port}"  
+                    type="int" />  
+            	</bean>  -->
+        	</list>  
+       	</constructor-arg>  
+    </bean>
+    
 </beans>

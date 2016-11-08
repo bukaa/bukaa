@@ -129,6 +129,5 @@
 		</div>
 	</body>
 	<script src="${ctx}/static/h+/4.1.0/js/jquery.min.js"></script>
-	<script src="${ctx}/static/lib/sd.js"></script>
 	<script src="${ctx}/static/h+/4.1.0/js/plugins/echarts/echarts-all.js"></script>
 </html>
