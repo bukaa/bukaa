@@ -7,7 +7,7 @@
 	<head>
 		<%@ include file="/head.jsp"%>
 		<%@ include file="/list-css.jsp"%>
-		<title>神盾(RSF)平台</title>
+		<title>BUKAA</title>
 	</head>
 	<body class="fixed-sidebar full-height-layout gray-bg" style="overflow:hidden">
 	    <div id="wrapper">

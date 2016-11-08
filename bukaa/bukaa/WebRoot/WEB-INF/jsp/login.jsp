@@ -7,7 +7,7 @@
 	<head>
 		<%@ include file="/head.jsp"%>
 		<link href="${ctx}/static/h+/4.1.0/css/login.css" rel="stylesheet">
-		<title>神盾(RSF)平台</title>
+		<title>BUKAA</title>
 		<script type="text/javascript">
 			$(function(){
 				var errorMessage = $("#errorMessage").val();
@@ -23,11 +23,11 @@
 	            <div class="col-sm-7">
 	                <div class="signin-info">
 	                    <div class="logopanel m-b">
-	                        <h1>神盾(RSF)平台</h1>
+	                        <h1>BUKAA</h1>
 	                    </div>
 	                    
 	                    <div class="m-b"></div>
-	                    <h4>欢迎使用 <strong>神盾(RSF)平台</strong></h4>
+	                    <h4>欢迎使用 <strong>BUKAA</strong></h4>
 	                    <ul class="m-b">
 	                        <li><i class="fa fa-arrow-circle-o-right m-r-xs"></i> 优势一</li>
 	                        <li><i class="fa fa-arrow-circle-o-right m-r-xs"></i> 优势二</li>
@@ -40,7 +40,7 @@
 	            <div class="col-sm-5">
 	                <form id="loginForm" action="loginCheck.h" method="post">
 	                    <h4 class="no-margins">登录：</h4>
-	                    <p class="m-t-md">神盾(RSF)平台</p>
+	                    <p class="m-t-md">BUKAA</p>
 	                    <input type="text" id="loginId" name="loginId" class="form-control uname" placeholder="用户名" />
 	                    <input type="password" id="loginPass" name="loginPass" class="form-control pword m-b" placeholder="密码" />
 	                    <input type="hidden" name="fromUrl" id="fromUrl" value="${fromUrl}"/>

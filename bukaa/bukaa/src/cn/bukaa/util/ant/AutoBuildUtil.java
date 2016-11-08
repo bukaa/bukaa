@@ -22,6 +22,7 @@ public class AutoBuildUtil extends Task {
 		      tomcatHome + "/" + "webapps" + "/" + webappName + "/WEB-INF/classes/", tomcatHome + "/" + "webapps" + "/" + webappName + "/WEB-INF/classes/" };
 		   
 		 String[] buildFilePathArr = buildFiles.split(" ");
+		 
 		 String basedirAbsolutePath = basedir.getAbsolutePath();
 		 String[] arrayOfString1;
 		 int j = (arrayOfString1 = buildFilePathArr).length;
