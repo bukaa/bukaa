@@ -14,11 +14,10 @@ import cn.bukaa.service.ISysUserService;
 
 
 /**
- * 用户管理控制器
- * @author GZR
+ * 
+ * @author BUKAA
  *
  */
-
 @Controller
 @RequestMapping(value="/system/user")
 public class UserController extends CommonController<SysUser>{

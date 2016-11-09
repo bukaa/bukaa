@@ -15,6 +15,7 @@ public class AutoBuildUtil extends Task {
 		 //String projectName = project.getName();
 		    
 		 String tomcatHome = project.getProperty("tomcat.home");
+		 
 		 String webappName = project.getProperty("webapp.name");
 		    
 		 String[] fromDirPaths = { "WebRoot/", "WebRoot/WEB-INF/classes/", "etc/classes" };
