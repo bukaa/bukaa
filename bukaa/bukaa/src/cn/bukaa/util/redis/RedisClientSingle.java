@@ -1,7 +1,6 @@
 package cn.bukaa.util.redis;
 
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.Properties;
 
 import org.apache.commons.net.telnet.TelnetClient;
@@ -9,7 +8,9 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 
 import redis.clients.jedis.Jedis;
-import cn.bukaa.util.*;
+
+import cn.bukaa.util.PropertiesLoaderUtil;
+import cn.bukaa.util.RuntimeProcessUtil;
 
 
 public class RedisClientSingle {
@@ -19,7 +20,7 @@ public class RedisClientSingle {
   
   private RedisClientSingle()
   {
-    if (!Boolean.parseBoolean(System.getProperty("ssm.cache.disable")))
+    if (!Boolean.parseBoolean(System.getProperty("DISABLE_CACHE_PROPERTY")))
     {
     	System.out.println("初始化Redis...");
       
@@ -37,12 +38,12 @@ public class RedisClientSingle {
     	try
     	{
     		checkRedisServers(prop);
-    		this.client = RedisPoolUtil.getJedis();
+    		/*this.client = RedisPoolUtil.getJedis();
     		if(this.client != null){
     			System.out.println("【缓存管理】Redis连接成功。。。");
     		}else{
     			System.err.println("【缓存管理】Redis连接失败。。。");
-    		}
+    		}*/
     	}
     	catch (Exception e)
     	{
@@ -99,7 +100,6 @@ public class RedisClientSingle {
 	    		  boolean exsit = RuntimeProcessUtil.exsitProcess("redis.exe");
 	    		  if (!exsit) {
 	    			  System.out.println("【缓存管理】本地Redis进程未启动，即将启动本地进程");
-	    			  String[] cmd = RedisUtil.getRedisCommand();
 	    			  String bat =  RedisUtil.getRedisBat();
 	    			  try {
 	    				  Runtime rt = Runtime.getRuntime();
@@ -109,9 +109,9 @@ public class RedisClientSingle {
 	    				  StreamGobbler outputGobbler = new StreamGobbler(proc.getInputStream(), "OUTPUT");  
 	    				  errorGobbler.start();  
 	    				  outputGobbler.start();  
+	    				  System.out.println("【缓存管理】本地Redis启动成功。。。");
 					} catch (Throwable e) {
-							System.out.println("【缓存管理】本地Redis进程启动失败，启动命令：" + Arrays.toString(cmd));
-							e.printStackTrace();
+						  System.out.println("【缓存管理】本地Redis启动失败，失败原因："+e.getMessage());
 					}
 	    		  }
 	    	  }

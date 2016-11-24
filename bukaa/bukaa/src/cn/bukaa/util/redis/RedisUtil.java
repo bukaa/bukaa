@@ -1,11 +1,17 @@
 package cn.bukaa.util.redis;
 
+import groovy.util.logging.Slf4j;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.List;
 
+import redis.clients.jedis.Jedis;
+import redis.clients.jedis.ShardedJedis;
 import cn.bukaa.util.StringUtil;
 
+@Slf4j
 public class RedisUtil {
 	public static String REDIS_EXE_NAME = "redis-server.exe";
 	
@@ -13,7 +19,10 @@ public class RedisUtil {
 	
 	public static String REDIS_BAT_NAME = "start.bat";
 	
-  
+	public static ShardedJedis shardedJedis;
+	
+	public static Jedis jedis;
+	
 	public static String getClassPath()
 	{
 		return RedisUtil.class.getClassLoader().getResource("").getPath();
@@ -44,19 +53,10 @@ public class RedisUtil {
 		return "/usr/local/bin/redis";
 	}
   
-	public static String[] getRedisCommand()
-	{
-		String[] command = new String[3];
-		String os = System.getProperty("os.name");
-		if (os.toLowerCase().contains("win"))
-		{
-			command[0] = StringUtil.urlDecode(getWindowsRedisPath(REDIS_EXE_NAME), "UTF-8");
-			command[1] = " ";
-			command[2] = StringUtil.urlDecode(getWindowsRedisPath(REDIS_CONF_NAME), "UTF-8");;
-		}
-		return command;
-	}
-	
+	/**
+	 * 获取redis启动批处理文件在windows中的路径
+	 * @return
+	 */
 	public static String getRedisBat() {
 		String os = System.getProperty("os.name");
 		if (os.toLowerCase().contains("win"))
@@ -84,6 +84,48 @@ public class RedisUtil {
 			}
 		}
 		return null;
+	}
+	
+	/*public static String set(String key, String value){
+		return getShardedJedis().set(key, value);
+	}
+	
+	public static String get(String key){
+		return getShardedJedis().get(key);
+	}*/
+	
+	/**
+	 * 插入List
+	 * @param key
+	 * @param list
+	 * @return
+	 */
+	public static Long set(String key, List<String> list){
+		if(list == null || shardedJedis == null){
+			return 0L;
+		}
+		return	shardedJedis.lpush(key, (String[])list.toArray());
+	}
+	
+	/**
+	 * 插入数组
+	 * @param key
+	 * @param str
+	 * @return
+	 */
+	public static Long set(String key, String[] str){
+		if(str == null || shardedJedis == null){
+			return 0L;
+		}
+		return	shardedJedis.lpush(key, str);
+	}
+	
+	/**
+	 * 删除key
+	 * @param key
+	 */
+	public static Long remove(String key){
+		return shardedJedis.del(key);
 	}
   
 }

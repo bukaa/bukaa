@@ -79,6 +79,15 @@
       	<property name="testOnReturn" value="${redis.testOnReturn}"/>
     </bean>
     
+    <bean id = "jedisPool" class="redis.clients.jedis.JedisPool">
+      	<constructor-arg index="0" ref="poolConfig"/>
+      	<constructor-arg index="1" value="${redis.host}" />  
+        <constructor-arg index="2" value="${redis.port}" type="int" />
+        <constructor-arg index="3" value="${redis.timeout}" type="int" /> 
+        <constructor-arg index="4" value="${redis.auth}" />
+    </bean>
+    
+    <!-- 集群时使用 -->
     <bean id = "shardedJedisPool" class="redis.clients.jedis.ShardedJedisPool">
       	<constructor-arg index="0" ref="poolConfig"/>
       	<constructor-arg index="1">  
@@ -93,7 +102,7 @@
                     	type="int" />  
                		<constructor-arg 
                     	index="2" 
-                    	value="${redis.pass}" />  
+                    	value="${redis.auth}" />  
             	</bean> 
             	<!-- 多台服务器时使用 -->
             	<!-- <bean class="redis.clients.jedis.JedisShardInfo">  
@@ -108,5 +117,7 @@
         	</list>  
        	</constructor-arg>  
     </bean>
+
+    <!-- 配置redis end -->
     
 </beans>

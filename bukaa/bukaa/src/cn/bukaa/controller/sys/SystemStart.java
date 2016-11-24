@@ -4,6 +4,10 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.web.context.support.WebApplicationContextUtils;
+
+import cn.bukaa.util.ServiceLocator;
 import cn.bukaa.util.StringUtil;
 import cn.bukaa.util.redis.RedisClientSingle;
 
@@ -38,7 +42,7 @@ public class SystemStart extends HttpServlet{
 		System.out.println("应用服务器：" + getServerInfo()); 		
 		System.out.println("JDK版本：" + System.getProperty("java.version")); 
 		System.out.println("----------------初始化业务BEAN管理服务--------");
-		//serviceInit();
+		serviceInit();
 		System.out.println("----------------初始化缓存服务--------");
 		initCache();
 		long endTime = System.currentTimeMillis();		
@@ -83,7 +87,13 @@ public class SystemStart extends HttpServlet{
 		return serverInfo;
 	}
 	
-	
+	/**
+	 * 初始化业务BEAN管理服务
+	 */
+	public void serviceInit() {
+		ApplicationContext ctx = WebApplicationContextUtils.getRequiredWebApplicationContext(getServletContext());
+		ServiceLocator.init(ctx);
+	}
 	
 	/**
 	 * 初始化缓存

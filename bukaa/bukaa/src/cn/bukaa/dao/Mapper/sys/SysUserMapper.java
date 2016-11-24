@@ -22,6 +22,4 @@ public interface SysUserMapper{
 
 	public SysUser findUserByLoginId(String loginId);
 	
-	
-	
 }
