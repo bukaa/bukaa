@@ -7,6 +7,8 @@ public interface ISysUserService {
 	public SysUser findById(String id);
 	
 	public SysUser findUserByLoginId(String loginId);
+
+	public int save(SysUser u);
 	
 
 }

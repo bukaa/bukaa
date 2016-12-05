@@ -11,7 +11,7 @@
 	<property name="dest.dir" value="${basedir}/dest" />
 
 	<property environment="env" />
-	<property name="tomcat.home" value="I:\tomcat\tomcat\tomcat_bukaa" />
+	<property name="tomcat.home" value="F:\tomcat\tomcat\tomcat_bukaa" />
 
 	<path id="classpath">
 		<fileset dir="${lib.dir}">

@@ -4,9 +4,12 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 
 import cn.bukaa.controller.common.CommonController;
 import cn.bukaa.dao.entity.sys.SysUser;
@@ -63,6 +66,13 @@ public class UserController extends CommonController<SysUser>{
 	@RequestMapping(value="/findById", method = RequestMethod.GET)
 	public SysUser findById(String id){
 		return service.findById(id);
+	}
+	
+	@RequestMapping(value="/add", method=RequestMethod.POST)
+	public ModelAndView add(@RequestBody SysUser u){
+		ModelAndView mv = new ModelAndView(new MappingJackson2JsonView());
+		int i = service.save(u);
+		return mv;
 	}
 	
 }
