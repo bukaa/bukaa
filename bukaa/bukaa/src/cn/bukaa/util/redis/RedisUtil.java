@@ -7,6 +7,16 @@ import redis.clients.jedis.Jedis;
 public class RedisUtil {
 	
 	public static Jedis jedis = RedisPoolUtil.getJedis();
+	
+	public static Jedis getJedis(){
+		return jedis;
+	}
+	
+	public static void closeJedis(Jedis jedis){
+		if(jedis != null && jedis.isConnected()){
+			jedis.disconnect();
+		}
+	}
 
 	/**
 	 * 插入List
@@ -15,10 +25,13 @@ public class RedisUtil {
 	 * @return
 	 */
 	public static Long set(String key, List<String> list){
-		if(list == null || jedis == null){
-			return 0L;
+		long result = 0L;
+		if(list != null && jedis != null){
+			for (String s : list) {
+				result = jedis.lpush(key, s);
+			}
 		}
-		return	jedis.lpush(key, (String[])list.toArray());
+		return	result;
 	}
 	
 	/**

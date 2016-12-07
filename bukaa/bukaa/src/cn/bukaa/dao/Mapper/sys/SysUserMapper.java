@@ -2,6 +2,9 @@ package cn.bukaa.dao.Mapper.sys;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.session.RowBounds;
+
 import cn.bukaa.dao.entity.sys.SysUser;
 
 public interface SysUserMapper{
@@ -18,7 +21,7 @@ public interface SysUserMapper{
 	
 	public int deletePhoto(String id);
 	
-	public List<SysUser> findAll();
+	public List<SysUser> findByWhereStr(@Param("whereStr") String whereStr, @Param("orderField") String orderField, @Param("order") String order, RowBounds rowBounds);
 
 	public SysUser findUserByLoginId(String loginId);
 	

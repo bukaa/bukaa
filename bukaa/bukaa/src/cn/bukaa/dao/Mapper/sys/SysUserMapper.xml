@@ -81,6 +81,18 @@
   		</where>
   	</sql>
   	
+  	<select id="findByWhereStr" resultMap="BaseResultMap">
+  		select <include refid="columnListSql"/> from <include refid="tableNameSql"/> p 
+  		<where>
+	  		<if test="whereStr != null and whereStr != ''">
+	  			${whereStr}
+	  		</if>
+  		</where>
+  		<if test="orderField != null and orderField != '' and order != null and order != ''">
+  			order by ${orderField} ${order}
+  		</if>
+  	</select>
+  	
   	<!-- 保存数据 -->
   	<insert id="save" parameterType="cn.bukaa.dao.entity.sys.SysUser" >
     	insert into <include refid="tableNameSql"/> (<include refid="insertListSql"/>)

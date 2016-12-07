@@ -9,7 +9,6 @@ import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import cn.bukaa.util.ServiceLocator;
 import cn.bukaa.util.StringUtil;
-import cn.bukaa.util.redis.RedisClientSingle;
 
 /**
  * 
@@ -108,6 +107,5 @@ public class SystemStart extends HttpServlet{
 		{
 			System.setProperty("DISABLE_CACHE_PROPERTY","false");
 		}
-		RedisClientSingle.getInstance();
 	}
 }
