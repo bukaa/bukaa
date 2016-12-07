@@ -35,7 +35,7 @@ public class UserController extends CommonController<SysUser>{
 	@RequestMapping(value="/findByWhereStr", method=RequestMethod.GET)
 	public PageInfo<SysUser> findAll(@RequestParam("start") int start, @RequestParam("size") int size){
 		StringBuilder whereStr = new StringBuilder("1 = 1 ");
-		whereStr.append("and is_disabled='0' and is_del='0'");
+		whereStr.append("and p.is_disabled='0' and p.is_del='0'");
 		return new PageInfo<SysUser>(uService.findByWhereStr(whereStr.toString(), "", "", start, size));
 	}
 

@@ -37,18 +37,18 @@
 	<classpathentry kind="lib" path="lib/pagehelper-4.1.3.jar"/>
 	<classpathentry kind="lib" path="lib/slf4j-api-1.7.7.jar"/>
 	<classpathentry kind="lib" path="lib/slf4j-log4j12-1.7.7.jar"/>
-	<classpathentry kind="lib" path="lib/spring-aop-4.0.2.RELEASE.jar" sourcepath="I:/文档/java资料/spring4.0.2源碼/spring-aop-4.0.2.RELEASE-sources.jar"/>
-	<classpathentry kind="lib" path="lib/spring-beans-4.0.2.RELEASE.jar" sourcepath="I:/文档/java资料/spring4.0.2源碼/spring-beans-4.0.2.RELEASE-sources.jar"/>
-	<classpathentry kind="lib" path="lib/spring-context-4.0.2.RELEASE.jar" sourcepath="I:/文档/java资料/spring4.0.2源碼/spring-context-4.0.2.RELEASE-sources.jar"/>
-	<classpathentry kind="lib" path="lib/spring-context-support-4.0.2.RELEASE.jar" sourcepath="I:/文档/java资料/spring4.0.2源碼/spring-context-support-4.0.2.RELEASE-sources.jar"/>
-	<classpathentry kind="lib" path="lib/spring-core-4.0.2.RELEASE.jar" sourcepath="I:/文档/java资料/spring4.0.2源碼/spring-core-4.0.2.RELEASE-sources.jar"/>
-	<classpathentry kind="lib" path="lib/spring-expression-4.0.2.RELEASE.jar" sourcepath="I:/文档/java资料/spring4.0.2源碼/spring-expression-4.0.2.RELEASE-sources.jar"/>
-	<classpathentry kind="lib" path="lib/spring-jdbc-4.0.2.RELEASE.jar" sourcepath="I:/文档/java资料/spring4.0.2源碼/spring-jdbc-4.0.2.RELEASE-sources.jar"/>
-	<classpathentry kind="lib" path="lib/spring-oxm-4.0.2.RELEASE.jar" sourcepath="I:/文档/java资料/spring4.0.2源碼/spring-oxm-4.0.2.RELEASE-sources.jar"/>
-	<classpathentry kind="lib" path="lib/spring-test-4.0.2.RELEASE.jar" sourcepath="I:/文档/java资料/spring4.0.2源碼/spring-test-4.0.2.RELEASE-sources.jar"/>
-	<classpathentry kind="lib" path="lib/spring-tx-4.0.2.RELEASE.jar" sourcepath="I:/文档/java资料/spring4.0.2源碼/spring-tx-4.0.2.RELEASE-sources.jar"/>
-	<classpathentry kind="lib" path="lib/spring-web-4.0.2.RELEASE.jar" sourcepath="I:/文档/java资料/spring4.0.2源碼/spring-web-4.0.2.RELEASE-sources.jar"/>
-	<classpathentry kind="lib" path="lib/spring-webmvc-4.0.2.RELEASE.jar" sourcepath="I:/文档/java资料/spring4.0.2源碼/spring-webmvc-4.0.2.RELEASE-sources.jar"/>
+	<classpathentry kind="lib" path="lib/spring-aop-4.0.2.RELEASE.jar" sourcepath="lib/spring-aop-4.0.2.RELEASE-sources.jar"/>
+	<classpathentry kind="lib" path="lib/spring-beans-4.0.2.RELEASE.jar" sourcepath="lib/spring-beans-4.0.2.RELEASE-sources.jar"/>
+	<classpathentry kind="lib" path="lib/spring-context-4.0.2.RELEASE.jar" sourcepath="lib/spring-context-4.0.2.RELEASE-sources.jar"/>
+	<classpathentry kind="lib" path="lib/spring-context-support-4.0.2.RELEASE.jar" sourcepath="lib/spring-context-support-4.0.2.RELEASE-sources.jar"/>
+	<classpathentry kind="lib" path="lib/spring-core-4.0.2.RELEASE.jar" sourcepath="lib/spring-core-4.0.2.RELEASE-sources.jar"/>
+	<classpathentry kind="lib" path="lib/spring-expression-4.0.2.RELEASE.jar" sourcepath="lib/spring-expression-4.0.2.RELEASE-sources.jar"/>
+	<classpathentry kind="lib" path="lib/spring-jdbc-4.0.2.RELEASE.jar" sourcepath="lib/spring-jdbc-4.0.2.RELEASE-sources.jar"/>
+	<classpathentry kind="lib" path="lib/spring-oxm-4.0.2.RELEASE.jar" sourcepath="lib/spring-oxm-4.0.2.RELEASE-sources.jar"/>
+	<classpathentry kind="lib" path="lib/spring-test-4.0.2.RELEASE.jar" sourcepath="lib/spring-test-4.0.2.RELEASE-sources.jar"/>
+	<classpathentry kind="lib" path="lib/spring-tx-4.0.2.RELEASE.jar" sourcepath="lib/spring-tx-4.0.2.RELEASE-sources.jar"/>
+	<classpathentry kind="lib" path="lib/spring-web-4.0.2.RELEASE.jar" sourcepath="lib/spring-web-4.0.2.RELEASE-sources.jar"/>
+	<classpathentry kind="lib" path="lib/spring-webmvc-4.0.2.RELEASE.jar" sourcepath="lib/spring-webmvc-4.0.2.RELEASE-sources.jar"/>
 	<classpathentry kind="lib" path="lib/thumbnailator-0.4.8.jar"/>
 	<classpathentry kind="lib" path="lib/commons-pool-1.5.4.jar"/>
 	<classpathentry kind="lib" path="lib/jedis-2.1.0.jar"/>
