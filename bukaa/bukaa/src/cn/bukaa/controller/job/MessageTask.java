@@ -16,7 +16,7 @@ public class MessageTask {
 	
 	Logger logger = LoggerFactory.getLogger(this.getClass());
 	
-	@Scheduled(cron="0 0/3 * * * ? " )
+	@Scheduled(cron="0 0 0/12 * * ? " )
 	public void sendMessageToRedis(){
 		List<String> messageList= new ArrayList<String>(); 
 		for (int i = 0; i < 10; i++) {
