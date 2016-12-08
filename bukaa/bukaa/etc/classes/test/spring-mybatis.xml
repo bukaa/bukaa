@@ -65,10 +65,10 @@
 	</bean>
 	
 	<!-- 持久化模板SqlSessionTemplate注入 -->
-	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate" scope="prototype">
 	  	<constructor-arg index="0" ref="sqlSessionFactory" />
 	</bean>
-	<bean id="sqlSession_orcl" class="org.mybatis.spring.SqlSessionTemplate">
+	<bean id="sqlSession_orcl" class="org.mybatis.spring.SqlSessionTemplate" scope="prototype">
 	  	<constructor-arg index="0" ref="sqlSessionFactory_orcl" />
 	</bean>
 	
