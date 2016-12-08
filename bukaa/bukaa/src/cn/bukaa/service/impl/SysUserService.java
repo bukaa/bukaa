@@ -6,7 +6,8 @@ import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import cn.bukaa.dao.Mapper.sys.SysUserMapper;
+import cn.bukaa.dao.Mapper.mysql.sys.UserMapper;
+import cn.bukaa.dao.Mapper.orcl.sys.SysUserMapper;
 import cn.bukaa.dao.entity.sys.SysUser;
 import cn.bukaa.service.ISysUserService;
 
@@ -14,11 +15,26 @@ import cn.bukaa.service.ISysUserService;
 public class SysUserService implements ISysUserService {
 	
 	@Autowired
-	private SysUserMapper dao;
+	private UserMapper dao;
+	
+	@Autowired
+	private SysUserMapper dao_orcl;
 	
 	@Override
 	public List<SysUser> findByWhereStr(String whereStr, String orderField, String order, int start, int size){
-		return dao.findByWhereStr(whereStr, orderField, order, new RowBounds(start, size));
+		List<SysUser> user_orcl = dao_orcl.findByWhereStr(whereStr, orderField, order, new RowBounds(start, size));
+		List<SysUser> user_mysql = dao.findByWhereStr(whereStr, orderField, order, new RowBounds(start, size));
+		if(user_orcl.size()>user_mysql.size()){
+			for (SysUser u : user_mysql) {
+				user_orcl.add(u);
+			}
+			return user_orcl;
+		}else{
+			for (SysUser u : user_orcl) {
+				user_mysql.add(u);
+			}
+			return user_mysql;
+		}
 	}
 	
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="cn.bukaa.dao.Mapper.sys.SysMenuMapper" >
+<mapper namespace="cn.bukaa.dao.Mapper.mysql.sys.MenuMapper" >
   	<resultMap id="BaseResultMap" type="cn.bukaa.dao.entity.sys.SysMenu" >
 	    <id column="id" property="id" jdbcType="VARCHAR" />
 	    <result column="parent_id" property="parentId" jdbcType="VARCHAR" />

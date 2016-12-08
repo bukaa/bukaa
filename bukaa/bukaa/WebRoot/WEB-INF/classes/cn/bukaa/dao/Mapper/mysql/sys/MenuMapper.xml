@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.bukaa.dao.Mapper.mysql.sys.MenuMapper" >
+  	<resultMap id="BaseResultMap" type="cn.bukaa.dao.entity.sys.SysMenu" >
+	    <id column="id" property="id" jdbcType="VARCHAR" />
+	    <result column="parent_id" property="parentId" jdbcType="VARCHAR" />
+	    <result column="name" property="name" jdbcType="VARCHAR" />
+	    <result column="is_del" property="isDel" jdbcType="BIT" />
+	    <result column="add_time" property="addTime" jdbcType="TIMESTAMP" />
+  	</resultMap>
+	
+	<!-- 表名 -->
+	<sql id="tableNameSql">
+		sys_menu
+	</sql>
+	
+	<!-- 列集合语句 -->
+  	<sql id="columnListSql">
+    	id, parent_id, name, is_del, add_time
+  	</sql>
+  	
+  	<!-- 插入集合语句 -->
+  	<sql id="insertListSql">
+    	id, parent_id, name, is_del, add_time
+  	</sql>
+  	
+  	<!-- 按主键查找条件语句 -->
+  	<sql id="idSql">
+  		id = #{id,jdbcType=VARCHAR}
+  	</sql>
+  	
+  	<!-- 主查询语句 -->
+  	<sql id="mainSql">
+  		select <include refid="columnListSql"/> from <include refid="tableNameSql"/> p where p.is_del='0'
+  	</sql>
+  	
+  	<!-- 保存数据 -->
+  	<insert id="save" parameterType="cn.bukaa.dao.entity.sys.SysMenu" >
+    	insert into <include refid="tableNameSql"/> (<include refid="insertListSql"/>)
+    	values (#{id,jdbcType=VARCHAR}, #{parentId,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR})
+  	</insert>
+  	
+  	<!-- 更新数据 -->
+  	<update id="update" parameterType="cn.bukaa.dao.entity.sys.SysMenu" >
+    	update <include refid="tableNameSql"/>
+    	<set>
+			parent_id = #{parentId,jdbcType=VARCHAR},
+			name = #{name,jdbcType=VARCHAR},
+      		<if test="isDel != null" >is_del = #{isDel,jdbcType=BIT},</if>
+      		<if test="addTime != null" >add_time = #{addTime,jdbcType=TIMESTAMP},</if>
+    	</set>
+    	where <include refid="idSql"/>
+  	</update>
+  
+  	<!-- 根据主键删除 -->
+  	<delete id="deleteById" parameterType="java.lang.String" >
+    	delete from <include refid="tableNameSql"/> where <include refid="idSql"/>
+  	</delete>
+  	
+  	<!-- 根据多个主键删除 -->
+  	<delete id="deleteByIds" parameterType="Object[]" >
+    	delete from <include refid="tableNameSql"/> where id in <foreach index="index" item="item" collection="array" separator="," open="(" close=")" >#{item}</foreach>
+  	</delete>
+  	
+  	<!-- 查找所有数据 -->
+  	<select id="findAll" resultMap="BaseResultMap">
+    	<include refid="mainSql"/>
+  	</select>
+  	
+  	<!-- 根据主键查找数据 -->
+  	<select id="findById" parameterType="java.lang.String" resultMap="BaseResultMap">
+    	select <include refid="columnListSql"/> from <include refid="tableNameSql"/> where <include refid="idSql"/>
+  	</select>
+  	
+</mapper>
