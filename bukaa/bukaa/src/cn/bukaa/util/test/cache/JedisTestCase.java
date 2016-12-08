@@ -14,8 +14,9 @@ import redis.clients.jedis.Pipeline;
 import redis.clients.jedis.SortingParams;
 import cn.bukaa.util.redis.RedisPoolUtil;
 import cn.bukaa.util.redis.RedisUtil;
+import cn.bukaa.util.test.BaseTest;
 
-public class JedisTestCase {
+public class JedisTestCase extends BaseTest {
 	/** 
      * 在不同的线程中使用相同的Jedis实例会发生奇怪的错误。但是创建太多的实现也不好因为这意味着会建立很多sokcet连接， 
      * 也会导致奇怪的错误发生。单一Jedis实例不是线程安全的。为了避免这些问题，可以使用JedisPool, 
@@ -23,13 +24,14 @@ public class JedisTestCase {
      * 这种方式可以解决那些问题并且会实现高效的性能 
      */  
   
-    public static void main(String[] args) {  
+    public void main(String[] args) {  
   
         // ...when closing your application:  
         //RedisPoolUtil.destroy();  
-    }  
-  
-    public static void Hello() {  
+    } 
+    
+    @Test
+    public void Hello() {  
         Jedis jedis = RedisUtil.getJedis();  
         try {  
             // 向key-->name中放入了value-->minxr  
@@ -75,7 +77,7 @@ public class JedisTestCase {
         System.out.println(jedis.exists("key"));  
     }  
   
-    public static void testString() {  
+    public void testString() {  
         System.out.println("==String==");  
         Jedis jedis = RedisUtil.getJedis();  
         try {  
@@ -123,7 +125,7 @@ public class JedisTestCase {
         System.out.println(jedis.del(new String[] { "foo", "foo1", "foo3" }));  
     }  
   
-    public static void testList() {  
+    public void testList() {  
         System.out.println("==List==");  
         Jedis jedis = RedisUtil.getJedis();  
         try {  
@@ -170,7 +172,7 @@ public class JedisTestCase {
         System.out.println(jedis.lrange("lists", 0, -1));  
     }  
   
-    public static void testSet() {  
+    public void testSet() {  
         System.out.println("==Set==");  
         Jedis jedis = RedisUtil.getJedis();  
         try {  
@@ -224,7 +226,7 @@ public class JedisTestCase {
         System.out.println(jedis.sdiff("sets1", "sets2"));  
     }  
   
-    public static void sortedSet() {  
+    public void sortedSet() {  
         System.out.println("==SoretedSet==");  
         Jedis jedis = RedisUtil.getJedis();  
         try {  
@@ -264,7 +266,7 @@ public class JedisTestCase {
         System.out.println(jedis.zrange("zset", 0, -1));  
     }  
   
-    public static void testHsh() {  
+    public void testHsh() {  
         System.out.println("==Hash==");  
         Jedis jedis = RedisUtil.getJedis();  
         try {  
@@ -324,7 +326,7 @@ public class JedisTestCase {
         System.out.println(jedis.hvals("hashs"));  
     }  
   
-    public static void testOther() throws InterruptedException {  
+    public void testOther() throws InterruptedException {  
         Jedis jedis = RedisUtil.getJedis();  
   
         try {  

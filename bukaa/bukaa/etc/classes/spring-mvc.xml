@@ -16,21 +16,13 @@
 						http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
 						http://www.springframework.org/schema/task
 						http://www.springframework.org/schema/task/spring-task-4.0.xsd">
+	
 	<!-- 扫描@Controller注解类 -->
 	<context:component-scan base-package="cn.bukaa.controller.*"/>
 	
 	<!-- 扫描定时任务，并配置线程池大小 -->
 	<task:annotation-driven scheduler="myScheduler"/>
 	<task:scheduler id="myScheduler" pool-size="10"/>
-	
-	<!-- 引入配置文件 -->
-	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">  
-	    <property name="locations">  
-	    	<list>  
-	          	<value>classpath*:/redis.properties</value>
-	    	</list>  
-	    </property>  
-	</bean>
 	
 	<!-- 避免JSON下载 -->
 	<bean id="mappingFastJsonHttpMessageConverter" class="com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter">
@@ -78,5 +70,4 @@
 	</bean>
 	
 	<import resource="classpath*:spring-cache.xml"/>
-	
 </beans>
