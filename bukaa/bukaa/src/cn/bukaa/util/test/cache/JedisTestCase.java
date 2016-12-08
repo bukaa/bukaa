@@ -22,14 +22,8 @@ public class JedisTestCase extends BaseTest {
      * 也会导致奇怪的错误发生。单一Jedis实例不是线程安全的。为了避免这些问题，可以使用JedisPool, 
      * JedisPool是一个线程安全的网络连接池。可以用JedisPool创建一些可靠Jedis实例，可以从池中拿到Jedis的实例。 
      * 这种方式可以解决那些问题并且会实现高效的性能 
-     */  
-  
-    public void main(String[] args) {  
-  
-        // ...when closing your application:  
-        //RedisPoolUtil.destroy();  
-    } 
-    
+     */
+	
     @Test
     public void Hello() {  
         Jedis jedis = RedisUtil.getJedis();  
@@ -46,7 +40,7 @@ public class JedisTestCase extends BaseTest {
   
             // 2、直接覆盖原来的数据  
             jedis.set("name", "jintao");  
-            System.out.println(jedis.get("jintao"));  
+            System.out.println(jedis.get("name"));  
   
             // 删除key对应的记录  
             jedis.del("name");  

@@ -6,6 +6,8 @@ import java.io.IOException;
 import java.util.Properties;
 
 import org.apache.commons.net.telnet.TelnetClient;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 
@@ -13,7 +15,6 @@ import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.ShardedJedis;
 import redis.clients.jedis.ShardedJedisPool;
-
 import cn.bukaa.util.PropertiesLoaderUtil;
 import cn.bukaa.util.RuntimeProcessUtil;
 import cn.bukaa.util.StringUtil;
@@ -27,9 +28,15 @@ public class RedisClientStart {
 	
 	public static String REDIS_BAT_NAME = "start.bat";
 	
+	private String DEFAULT_REDIS_HOST = "127.0.0.1";
+	
+	private String DEFAULT_REDIS_PORT = "6379";
+	
 	private JedisPool jedisPool;
 	
 	private ShardedJedisPool shardedJedisPool;
+	
+	private Logger logger = LoggerFactory.getLogger(this.getClass());
 	
   
 	private RedisClientStart()
@@ -44,12 +51,12 @@ public class RedisClientStart {
 				prop = PropertiesLoaderUtil.loadProperties(rs.getFile());
 			} catch (IOException e1)
 			{
-				e1.printStackTrace();
+				logger.error("redis.properties 文件不存在");
 			}
 			try {
 				checkRedisServers(prop);
 			} catch (Exception e) {
-				e.printStackTrace();
+				logger.error("redis初始化失败...");
 			}
 		}
 	}
@@ -84,14 +91,16 @@ public class RedisClientStart {
 	 */
 	private void checkRedisServers(Properties prop){
 		boolean isSuccess = false;
-		String addr = prop.getProperty("redis.host");
-		String port = prop.getProperty("redis.port");
+		if(prop != null){
+			DEFAULT_REDIS_HOST = prop.getProperty("redis.host");
+			DEFAULT_REDIS_PORT = prop.getProperty("redis.port");
+		}
 		String os = System.getProperty("os.name");
 		TelnetClient telnet = new TelnetClient();
 		telnet.setConnectTimeout(1000);
 		if (os.toLowerCase().contains("win")) {
 			  try {
-				  telnet.connect(addr, Integer.parseInt(port));
+				  telnet.connect(DEFAULT_REDIS_HOST, Integer.parseInt(DEFAULT_REDIS_PORT));
 		    	  isSuccess = true;
 			  }catch (Exception e) {
 		    	  System.err.println("【缓存管理】redis连接测试失败" + e.getMessage());

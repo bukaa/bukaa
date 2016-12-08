@@ -3,17 +3,14 @@ package cn.bukaa.util.redis;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
-
 import org.springframework.core.io.ClassPathResource;
-
-import cn.bukaa.util.PropertiesLoaderUtil;
-
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
 import redis.clients.jedis.JedisShardInfo;
 import redis.clients.jedis.ShardedJedis;
 import redis.clients.jedis.ShardedJedisPool;
+import cn.bukaa.util.PropertiesLoaderUtil;
 
 /**
  * redis池管理
@@ -29,7 +26,7 @@ public final class RedisPoolUtil {
     private static int PORT = 6379;
     
     //访问密码
-    private static String AUTH = null;
+    private static String AUTH = "bukaa";
     
     //可用连接实例的最大数目，默认值为8；
     //如果赋值为-1，则表示不限制；如果pool已经分配了maxActive个jedis实例，则此时pool的状态为exhausted(耗尽)。
@@ -55,30 +52,37 @@ public final class RedisPoolUtil {
      */
     static {
         try {
-        	Properties prop = PropertiesLoaderUtil.loadProperties(new ClassPathResource("redis.properties").getFile());
-            //Redis服务器IP
-            ADDR = prop.getProperty("redis.host");
-            
-            //Redis的端口号
-            PORT = Integer.parseInt(prop.getProperty("redis.port"));
-            
-            //访问密码
-            AUTH = prop.getProperty("redis.auth");
-            
-            //可用连接实例的最大数目，默认值为8；
-            //如果赋值为-1，则表示不限制；如果pool已经分配了maxActive个jedis实例，则此时pool的状态为exhausted(耗尽)。
-            MAX_ACTIVE = Integer.parseInt(prop.getProperty("redis.maxActive"));
-            
-            //控制一个pool最多有多少个状态为idle(空闲的)的jedis实例，默认值也是8。
-            MAX_IDLE = Integer.parseInt(prop.getProperty("redis.maxIdle"));
-            
-            //等待可用连接的最大时间，单位毫秒，默认值为-1，表示永不超时。如果超过等待时间，则直接抛出JedisConnectionException；
-            MAX_WAIT = Integer.parseInt(prop.getProperty("redis.maxWait"));
-            
-            TIMEOUT = Integer.parseInt(prop.getProperty("redis.timeout"));
-            
-            //在borrow一个jedis实例时，是否提前进行validate操作；如果为true，则得到的jedis实例均是可用的；
-            TEST_ON_BORROW =Boolean.parseBoolean(prop.getProperty("redis.testOnBorrow"));
+        	Properties prop = null;
+        	try {
+        		prop = PropertiesLoaderUtil.loadProperties(new ClassPathResource("redis.properties").getFile());
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+			}
+        	if(prop != null){
+        		//Redis服务器IP
+        		ADDR = prop.getProperty("redis.host");
+        		
+        		//Redis的端口号
+        		PORT = Integer.parseInt(prop.getProperty("redis.port"));
+        		
+        		//访问密码
+        		AUTH = prop.getProperty("redis.auth");
+        		
+        		//可用连接实例的最大数目，默认值为8；
+        		//如果赋值为-1，则表示不限制；如果pool已经分配了maxActive个jedis实例，则此时pool的状态为exhausted(耗尽)。
+        		MAX_ACTIVE = Integer.parseInt(prop.getProperty("redis.maxActive"));
+        		
+        		//控制一个pool最多有多少个状态为idle(空闲的)的jedis实例，默认值也是8。
+        		MAX_IDLE = Integer.parseInt(prop.getProperty("redis.maxIdle"));
+        		
+        		//等待可用连接的最大时间，单位毫秒，默认值为-1，表示永不超时。如果超过等待时间，则直接抛出JedisConnectionException；
+        		MAX_WAIT = Integer.parseInt(prop.getProperty("redis.maxWait"));
+        		
+        		TIMEOUT = Integer.parseInt(prop.getProperty("redis.timeout"));
+        		
+        		//在borrow一个jedis实例时，是否提前进行validate操作；如果为true，则得到的jedis实例均是可用的；
+        		TEST_ON_BORROW =Boolean.parseBoolean(prop.getProperty("redis.testOnBorrow"));
+        	}
             
             JedisPoolConfig config = new JedisPoolConfig();
             config.setMaxActive(MAX_ACTIVE);
