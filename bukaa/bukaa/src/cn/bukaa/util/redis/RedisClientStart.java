@@ -51,7 +51,7 @@ public class RedisClientStart {
 				prop = PropertiesLoaderUtil.loadProperties(rs.getFile());
 			} catch (IOException e1)
 			{
-				logger.error("redis.properties 文件不存在");
+				logger.error("redis.properties FileNotFound");
 			}
 			try {
 				checkRedisServers(prop);
