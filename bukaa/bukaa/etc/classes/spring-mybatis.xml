@@ -30,10 +30,21 @@
 	
 	<!-- 数据源配置 -->
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
-		<property name="driverClassName" value="${jdbc.driver}"/>
-		<property name="url" value="${jdbc.url}"/>
-		<property name="username" value="${jdbc.username}"/>
-		<property name="password" value="${jdbc.password}"/>
+		<property name="driverClassName" value="${mysql.jdbc.driver}"/>
+		<property name="url" value="${mysql.jdbc.url}"/>
+		<property name="username" value="${mysql.jdbc.username}"/>
+		<property name="password" value="${mysql.jdbc.password}"/>
+		<property name="initialSize" value="${jdbc.initialSize}"/>
+		<property name="maxActive" value="${jdbc.maxActive}"/>
+		<property name="maxIdle" value="${jdbc.maxIdle}"/>
+		<property name="minIdle" value="${jdbc.minIdle}"/>
+		<property name="maxWait" value="${jdbc.maxWait}"/>
+	</bean>
+	<bean id="dataSource_orcl" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="${oracle.jdbc.driver}"/>
+		<property name="url" value="${oracle.jdbc.url}"/>
+		<property name="username" value="${oracle.jdbc.username}"/>
+		<property name="password" value="${oracle.jdbc.password}"/>
 		<property name="initialSize" value="${jdbc.initialSize}"/>
 		<property name="maxActive" value="${jdbc.maxActive}"/>
 		<property name="maxIdle" value="${jdbc.maxIdle}"/>
@@ -44,23 +55,21 @@
 	<!-- Spring和MyBatis整合 -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"/>
-		<property name="mapperLocations" value="classpath:cn/bukaa/dao/Mapper/**/*.xml"/>
-		<property name="plugins">
-			<array>
-				<bean class="com.github.pagehelper.PageHelper">
-					<property name="properties">
-						<value>
-							pageSizeZero = true
-						</value>
-					</property>
-				</bean>
-			</array>
-		</property>
+		<property name="mapperLocations" value="classpath:cn/bukaa/dao/Mapper/mysql/**/*.xml"/>
+		<property name="configLocation" value="classpath:mybatis-config.xml"></property>
+	</bean>
+	<bean id="sqlSessionFactory_orcl" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource_orcl"/>
+		<property name="mapperLocations" value="classpath:cn/bukaa/dao/Mapper/orcl/**/*.xml"/>
+		<property name="configLocation" value="classpath:mybatis-config.xml"></property>
 	</bean>
 	
 	<!-- 持久化模板SqlSessionTemplate注入 -->
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
 	  	<constructor-arg index="0" ref="sqlSessionFactory" />
+	</bean>
+	<bean id="sqlSession_orcl" class="org.mybatis.spring.SqlSessionTemplate">
+	  	<constructor-arg index="0" ref="sqlSessionFactory_orcl" />
 	</bean>
 	
 	<!-- 基础Dao的SqlSession注入 -->
@@ -70,9 +79,13 @@
 	
 	<!-- DAO接口所在包-->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="cn.bukaa.dao.Mapper"/>
+		<property name="basePackage" value="cn.bukaa.dao.Mapper.mysql"/>
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
 	</bean> 
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="cn.bukaa.dao.Mapper.orcl"/>
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory_orcl"/>
+	</bean>
 	
 	<!-- 事件管理 -->
 	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
