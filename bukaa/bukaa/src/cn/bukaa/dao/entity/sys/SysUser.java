@@ -35,8 +35,6 @@ public class SysUser implements Serializable{
 
     private String email;
 
-    private byte[] photo;
-
     private Date lastTime;
 
     private String lastIp;
@@ -157,14 +155,6 @@ public class SysUser implements Serializable{
     public void setEmail(String email) {
         this.email = email == null ? null : email.trim();
     }
-    
-    public byte[] getPhoto() {
-		return photo;
-	}
-
-	public void setPhoto(byte[] photo) {
-		this.photo = photo;
-	}
 
 	public Date getLastTime() {
         return lastTime;

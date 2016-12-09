@@ -22,10 +22,6 @@
 	    <result column="add_user" property="addUser" jdbcType="VARCHAR" />
 	    <result column="add_time" property="addTime" jdbcType="TIMESTAMP" />
   	</resultMap>
- 	<resultMap  id="blobResultMap" type="cn.bukaa.dao.entity.sys.SysUser" >
- 		<id column="id" property="id" jdbcType="VARCHAR" />
-		<result column="photo" property="photo" jdbcType="BLOB" />
-	</resultMap>
 	
 	<!-- 表名 -->
 	<sql id="tableNameSql">
@@ -41,12 +37,7 @@
   	<!-- 插入集合语句 -->
   	<sql id="insertListSql">
     	id, login_id, login_pass, real_name, no, org_id, org_name, sex, id_card, phone, mobile, email, 
-		photo, last_time, last_ip, login_num, is_disabled, add_user
-  	</sql>
-  	
-  	<!-- Blob集合语句 -->
-  	<sql id="blobListSql">
-    	id, photo
+		last_time, last_ip, login_num, is_disabled, add_user
   	</sql>
   	
   	<!-- 按主键查找条件语句 -->
@@ -100,7 +91,7 @@
 	      #{realName,jdbcType=VARCHAR}, #{no,jdbcType=VARCHAR}, #{orgId,jdbcType=VARCHAR}, 
 	      #{orgName,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, #{idCard,jdbcType=VARCHAR}, 
 	      #{phone,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
-	      #{photo,jdbcType=BLOB}, #{lastTime,jdbcType=TIMESTAMP}, #{lastIp,jdbcType=VARCHAR}, 
+	      #{lastTime,jdbcType=TIMESTAMP}, #{lastIp,jdbcType=VARCHAR}, 
 	      #{loginNum,jdbcType=INTEGER}, #{isDisabled,jdbcType=BIT}, #{addUser,jdbcType=VARCHAR})
   	</insert>
   	
@@ -119,7 +110,6 @@
 			phone = #{phone,jdbcType=VARCHAR},
 			mobile = #{mobile,jdbcType=VARCHAR},
 			email = #{email,jdbcType=VARCHAR},
-			<if test="photo != null" >photo = #{photo,jdbcType=BLOB},</if>
 			last_time = #{lastTime,jdbcType=TIMESTAMP},
 			last_ip = #{lastIp,jdbcType=VARCHAR},
 			login_num = #{loginNum,jdbcType=INTEGER},
@@ -139,11 +129,6 @@
   	<!-- 根据多个主键删除 -->
   	<delete id="deleteByIds" parameterType="Object[]" >
     	delete from <include refid="tableNameSql"/> where id in <foreach index="index" item="item" collection="array" separator="," open="(" close=")" >#{item}</foreach>
-  	</delete>
-  	
-  	<!-- 根据主键删除头像 -->
-  	<delete id="deletePhoto" parameterType="java.lang.String" >
-    	update <include refid="tableNameSql"/> set photo = null where <include refid="idSql"/>
   	</delete>
   
   	<!-- 查找所有数据 -->

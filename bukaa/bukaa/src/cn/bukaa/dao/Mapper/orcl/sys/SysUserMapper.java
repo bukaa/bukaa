@@ -19,8 +19,6 @@ public interface SysUserMapper{
 	
 	public int deleteByIds(String[] ids);
 	
-	public int deletePhoto(String id);
-	
 	public List<SysUser> findByWhereStr(@Param("whereStr") String whereStr, @Param("orderField") String orderField, @Param("order") String order, RowBounds rowBounds);
 
 	public SysUser findUserByLoginId(String loginId);
