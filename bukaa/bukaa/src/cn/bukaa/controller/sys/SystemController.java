@@ -14,13 +14,11 @@ import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import cn.bukaa.dao.entity.sys.SysMenu;
 import cn.bukaa.service.ISysMenuService;
+import cn.bukaa.util.redis.RedisUtil;
 
 @Controller
 @RequestMapping(value="/sys")
 public class SystemController {
-	
-	@Autowired
-	private JedisPool jedisPool;
 	
 	@Autowired
 	private ISysMenuService menuService;
@@ -29,7 +27,7 @@ public class SystemController {
 	@ResponseBody
 	public Map<String, Object> initCache(){
 		Map<String, Object> result = new HashMap<String, Object>();
-		Jedis jedis = jedisPool.getResource();
+		Jedis jedis = RedisUtil.getJedis();
 		
 		List<SysMenu> menuList = menuService.findAll();
 		if(jedis.exists("menu")){

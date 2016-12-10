@@ -29,27 +29,23 @@
 	</bean>
 	
 	<!-- 数据源配置 -->
-	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+	<bean id="dataSource" class="com.atomikos.jdbc.nonxa.AtomikosNonXADataSourceBean" destroy-method="close">
+		<property name="uniqueResourceName" value="atomikosNonXADS1"></property>
 		<property name="driverClassName" value="${mysql.jdbc.driver}"/>
 		<property name="url" value="${mysql.jdbc.url}"/>
-		<property name="username" value="${mysql.jdbc.username}"/>
+		<property name="user" value="${mysql.jdbc.username}"/>
 		<property name="password" value="${mysql.jdbc.password}"/>
-		<property name="initialSize" value="${jdbc.initialSize}"/>
-		<property name="maxActive" value="${jdbc.maxActive}"/>
-		<property name="maxIdle" value="${jdbc.maxIdle}"/>
-		<property name="minIdle" value="${jdbc.minIdle}"/>
-		<property name="maxWait" value="${jdbc.maxWait}"/>
+		<property name="poolSize" value="5"></property>  
+        <property name="borrowConnectionTimeout" value="60"></property>
 	</bean>
-	<bean id="dataSource_orcl" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+	<bean id="dataSource_orcl" class="com.atomikos.jdbc.nonxa.AtomikosNonXADataSourceBean" destroy-method="close">
+		<property name="uniqueResourceName" value="atomikosNonXADS2"></property>
 		<property name="driverClassName" value="${oracle.jdbc.driver}"/>
 		<property name="url" value="${oracle.jdbc.url}"/>
-		<property name="username" value="${oracle.jdbc.username}"/>
+		<property name="user" value="${oracle.jdbc.username}"/>
 		<property name="password" value="${oracle.jdbc.password}"/>
-		<property name="initialSize" value="${jdbc.initialSize}"/>
-		<property name="maxActive" value="${jdbc.maxActive}"/>
-		<property name="maxIdle" value="${jdbc.maxIdle}"/>
-		<property name="minIdle" value="${jdbc.minIdle}"/>
-		<property name="maxWait" value="${jdbc.maxWait}"/>
+		<property name="poolSize" value="5"></property>  
+        <property name="borrowConnectionTimeout" value="60"></property>
 	</bean>
 	
 	<!-- Spring和MyBatis整合 -->
@@ -87,30 +83,26 @@
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory_orcl"/>
 	</bean>
 	
-	<!-- 事件管理 -->
-	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-		<property name="dataSource" ref="dataSource"/>
-	</bean>
-	
-	<!-- 使用annotation定义事务 	-->
-	<tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true" order="999" />
-	
-	<!-- 定义声明式事务 -->
-    <tx:advice id="txAdvice" transaction-manager="transactionManager">
-          <tx:attributes>           
-             <tx:method name="get*Data" read-only="true" propagation="SUPPORTS"/>
-             <tx:method name="find*" read-only="true" propagation="SUPPORTS"/>
-             <tx:method name="save*" propagation="REQUIRED" rollback-for="Exception" />
-             <tx:method name="update*" propagation="REQUIRED" rollback-for="Exception" />
-             <tx:method name="delete*" propagation="REQUIRED" rollback-for="Exception" />
-             <tx:method name="execute*" propagation="REQUIRED" rollback-for="Exception" />
-             <tx:method name="synch*" propagation="REQUIRED" rollback-for="Exception" />
-             <tx:method name="init*" propagation="REQUIRED" rollback-for="Exception" />
-         </tx:attributes>
-     </tx:advice>
-     
-     <aop:config proxy-target-class="true">
-     	<aop:pointcut expression="execution(public * cn.bukaa.service.*Service.*(..))" id="txServicePoint"/>	       	          	   	     	
-     	<aop:advisor advice-ref="txAdvice" pointcut-ref="txServicePoint" order="1000"/>
-     </aop:config>
+	<bean id="atomikosTransactionManager" class="com.atomikos.icatch.jta.UserTransactionManager" init-method="init" destroy-method="close">  
+        <property name="forceShutdown">  
+            <value>true</value>  
+        </property>  
+    </bean>
+    
+    <bean id="atomikosUserTransaction" class="com.atomikos.icatch.jta.UserTransactionImp">  
+        <property name="transactionTimeout" value="300" />  
+    </bean>
+    
+    <bean id="springTransactionManager" class="org.springframework.transaction.jta.JtaTransactionManager">  
+        <property name="transactionManager">  
+            <ref bean="atomikosTransactionManager" />  
+        </property>  
+        <property name="userTransaction">  
+            <ref bean="atomikosUserTransaction" />  
+        </property>  
+        <property name="allowCustomIsolationLevels" value="true"/>
+    </bean>  
+      
+    <tx:annotation-driven transaction-manager="springTransactionManager"/>
+
 </beans>

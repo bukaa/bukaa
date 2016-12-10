@@ -1,8 +1,12 @@
 package cn.bukaa.controller.sys;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,6 +34,8 @@ public class UserController extends CommonController<SysUser>{
 
 	@Autowired
 	private ISysUserService uService;
+	
+	public Logger logger = LoggerFactory.getLogger(this.getClass());
 
 	@ResponseBody
 	@RequestMapping(value="/findByWhereStr", method=RequestMethod.GET)
@@ -46,8 +52,9 @@ public class UserController extends CommonController<SysUser>{
 	 */
 	@RequestMapping(value="/list", method=RequestMethod.GET)
 	public ModelAndView list(HttpServletRequest request){
-		ModelAndView mav = new ModelAndView("/sys/user/userList");
-		return mav;
+		ModelAndView mv = new ModelAndView("/sys/user/userList");
+		mv.addObject(uService.findByWhereStr("", "", "", 1, 10).get(0));
+		return mv;
 	}
 	
 	/**
@@ -70,8 +77,9 @@ public class UserController extends CommonController<SysUser>{
 	 * 打开添加页面
 	 * @return ModelAndView
 	 */
+	@ResponseBody
 	@RequestMapping(value="/findById", method = RequestMethod.GET)
-	public SysUser findById(String id){
+	public SysUser findById(String id, HttpServletResponse response){
 		return uService.findById(id);
 	}
 	
@@ -80,6 +88,18 @@ public class UserController extends CommonController<SysUser>{
 		ModelAndView mv = new ModelAndView(new MappingJackson2JsonView());
 		//int i = service.save(u);
 		return mv;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/test", method=RequestMethod.GET)
+	public void test(){
+		SysUser user = new SysUser();
+		try {
+			uService.saveUser(user);
+		} catch (Exception e) {
+			logger.error("roooooooooooooooooooooo");
+			e.printStackTrace();
+		}
 	}
 	
 }

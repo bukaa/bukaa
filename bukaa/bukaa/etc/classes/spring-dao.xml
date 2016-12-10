@@ -16,52 +16,54 @@
 						http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
                         http://www.springframework.org/schema/mvc    
                         http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">  
-	<!-- 自动扫描 -->
-	<context:component-scan base-package="cn.bukaa.service.*"/>
+		<!-- 自动扫描 -->
+	<context:component-scan base-package="cn.bukaa">
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
 	
-	 <!-- 引入配置文件 -->
+	<!-- 引入配置文件 -->
 	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">  
 	    <property name="locations">  
 	    	<list>  
-	          	<value>file:etc/classes/application.properties</value>
+	          	<value>classpath*:/application.properties</value>
 	    	</list>  
 	    </property>  
 	</bean>
 	
 	<!-- 数据源配置 -->
-	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+	<bean id="dataSource" class="com.atomikos.jdbc.nonxa.AtomikosNonXADataSourceBean">
+		<property name="uniqueResourceName" value="atomikosNonXADS1"></property>
 		<property name="driverClassName" value="${mysql.jdbc.driver}"/>
 		<property name="url" value="${mysql.jdbc.url}"/>
-		<property name="username" value="${mysql.jdbc.username}"/>
+		<property name="user" value="${mysql.jdbc.username}"/>
 		<property name="password" value="${mysql.jdbc.password}"/>
-		<property name="initialSize" value="${jdbc.initialSize}"/>
-		<property name="maxActive" value="${jdbc.maxActive}"/>
-		<property name="maxIdle" value="${jdbc.maxIdle}"/>
-		<property name="minIdle" value="${jdbc.minIdle}"/>
-		<property name="maxWait" value="${jdbc.maxWait}"/>
+		<property name="poolSize" value="${poolSize}" />  
+        <property name="minPoolSize" value="${minPoolSize}"/>  
+        <property name="maxPoolSize" value="${maxPoolSize}"/>
+        <property name="borrowConnectionTimeout" value="${borrowConnectionTimeout}"></property>
 	</bean>
-	<bean id="dataSource_orcl" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+	<bean id="dataSource_orcl" class="com.atomikos.jdbc.nonxa.AtomikosNonXADataSourceBean">
+		<property name="uniqueResourceName" value="atomikosNonXADS2"></property>
 		<property name="driverClassName" value="${oracle.jdbc.driver}"/>
 		<property name="url" value="${oracle.jdbc.url}"/>
-		<property name="username" value="${oracle.jdbc.username}"/>
+		<property name="user" value="${oracle.jdbc.username}"/>
 		<property name="password" value="${oracle.jdbc.password}"/>
-		<property name="initialSize" value="${jdbc.initialSize}"/>
-		<property name="maxActive" value="${jdbc.maxActive}"/>
-		<property name="maxIdle" value="${jdbc.maxIdle}"/>
-		<property name="minIdle" value="${jdbc.minIdle}"/>
-		<property name="maxWait" value="${jdbc.maxWait}"/>
+		<property name="poolSize" value="${poolSize}" />  
+        <property name="minPoolSize" value="${minPoolSize}"/>  
+        <property name="maxPoolSize" value="${maxPoolSize}"/>        
+        <property name="borrowConnectionTimeout" value="${borrowConnectionTimeout}"></property>
 	</bean>
 	
 	<!-- Spring和MyBatis整合 -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"/>
 		<property name="mapperLocations" value="classpath:cn/bukaa/dao/Mapper/mysql/**/*.xml"/>
-		<property name="configLocation" value="file:etc/classes/mybatis-config.xml"></property>
+		<property name="configLocation" value="classpath:mybatis-config.xml"></property>
 	</bean>
 	<bean id="sqlSessionFactory_orcl" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource_orcl"/>
 		<property name="mapperLocations" value="classpath:cn/bukaa/dao/Mapper/orcl/**/*.xml"/>
-		<property name="configLocation" value="file:etc/classes/mybatis-config.xml"></property>
+		<property name="configLocation" value="classpath:mybatis-config.xml"></property>
 	</bean>
 	
 	<!-- 持久化模板SqlSessionTemplate注入 -->
@@ -87,15 +89,29 @@
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory_orcl"/>
 	</bean>
 	
-	<!-- 事件管理 -->
-	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-		<property name="dataSource" ref="dataSource"/>
-	</bean>
-	
-	<!-- 使用annotation定义事务 	-->
-	<tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true" order="999" />
-	
-	<!-- 定义声明式事务 -->
+	<bean id="atomikosTransactionManager" class="com.atomikos.icatch.jta.UserTransactionManager" init-method="init" destroy-method="close">  
+        <property name="forceShutdown">  
+            <value>true</value>  
+        </property>  
+    </bean>
+    
+    <bean id="atomikosUserTransaction" class="com.atomikos.icatch.jta.UserTransactionImp">  
+        <property name="transactionTimeout" value="300" />  
+    </bean>
+    
+    <bean id="transactionManager" class="org.springframework.transaction.jta.JtaTransactionManager">  
+        <property name="transactionManager">  
+            <ref bean="atomikosTransactionManager" />  
+        </property>  
+        <property name="userTransaction">  
+            <ref bean="atomikosUserTransaction" />  
+        </property>  
+        <property name="allowCustomIsolationLevels" value="true"/>
+    </bean>  
+      
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+    
+    <!-- 定义声明式事务 -->
     <tx:advice id="txAdvice" transaction-manager="transactionManager">
           <tx:attributes>           
              <tx:method name="get*Data" read-only="true" propagation="SUPPORTS"/>
@@ -113,4 +129,5 @@
      	<aop:pointcut expression="execution(public * cn.bukaa.service.*Service.*(..))" id="txServicePoint"/>	       	          	   	     	
      	<aop:advisor advice-ref="txAdvice" pointcut-ref="txServicePoint" order="1000"/>
      </aop:config>
+
 </beans>

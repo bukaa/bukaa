@@ -75,7 +75,7 @@ public class SysUser implements Serializable{
     public void setLoginId(String loginId) {
         this.loginId = loginId == null ? null : loginId.trim();
     }
-
+    
     public String getLoginPass() {
         return loginPass;
     }

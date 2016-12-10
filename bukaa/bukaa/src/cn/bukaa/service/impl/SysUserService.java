@@ -1,5 +1,6 @@
 package cn.bukaa.service.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import org.apache.ibatis.session.RowBounds;
@@ -47,25 +48,25 @@ public class SysUserService implements ISysUserService {
 	}
 
 	@Override
-	public int save(SysUser u) {
-		
-		/*TransactionDefinition txDefinition = new TransactionDefinition();
-        TransactionStatus txStatus = txManager.getTransaction(txDefinition);
-		int result = 0;
-		try {
-            result = biz.save(u);
-            if(result > 0){
-                return result;
-            }
-            //result = addressDao.save(user.getId(), user.getAddress());
-            transactionDefinition.commit(status);
-        } catch (Exception e) {
-            result = 0;
-            transactionDefinition.rollback(status);
-        }
-        return result;*/
+	public int saveUser(SysUser u) {
+		for (int i = 0; i < 9; i++) {
+			SysUser user = new SysUser();
+			user.setId("3984265ff40c4aadb5999d1d35b9623"+i);
+			user.setLoginId("admin");
+			user.setLoginPass("202cb962ac59075b964b07152d234b70");
+			user.setNo(i+"");
+			user.setAddTime(new Date());
+			user.setAdmin(true);
+			user.setEmail("940446879@qq.com");
+			user.setSex("1");
+			
+			if(i % 2 == 0){
+				dao.save(user);
+			}else{
+				dao_orcl.save(user);
+			}
+		}
 		return 0;
 	}
-
 
 }

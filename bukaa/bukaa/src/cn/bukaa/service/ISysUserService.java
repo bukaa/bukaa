@@ -12,6 +12,6 @@ public interface ISysUserService {
 	
 	public SysUser findUserByLoginId(String loginId);
 
-	public int save(SysUser u);
+	public int saveUser(SysUser u);
 
 }

@@ -10,9 +10,9 @@ import org.springframework.transaction.annotation.Transactional;
 import com.alibaba.fastjson.JSON;
 
 @RunWith(JUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "file:etc/classes/test/spring-mvc.xml", "file:etc/classes/test/spring-mybatis.xml"})
+@ContextConfiguration(locations = { "file:etc/classes/test/spring-mvc.xml", "file:etc/classes/test/spring-dao.xml"})
 @Transactional  
-@TransactionConfiguration(transactionManager = "transactionManager", defaultRollback = false) 
+@TransactionConfiguration(transactionManager = "transactionManager", defaultRollback = true) 
 public class BaseTest {
 	
 	public Logger logger = LoggerFactory.getLogger(this.getClass());

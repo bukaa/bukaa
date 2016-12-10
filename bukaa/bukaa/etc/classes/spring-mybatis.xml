@@ -17,7 +17,9 @@
                         http://www.springframework.org/schema/mvc    
                         http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">  
 	<!-- 自动扫描 -->
-	<context:component-scan base-package="cn.bukaa.service.*"/>
+	<context:component-scan base-package="cn.bukaa">
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
 	
 	<!-- 引入配置文件 -->
 	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">  
@@ -87,7 +89,7 @@
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory_orcl"/>
 	</bean>
 	
-	<!-- 事件管理 -->
+	<!-- mysql事务管理 -->
 	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource"/>
 	</bean>
@@ -109,8 +111,39 @@
          </tx:attributes>
      </tx:advice>
      
-     <aop:config proxy-target-class="true">
+     <aop:aspectj-autoproxy proxy-target-class="true"/>
+     
+     <aop:config>
      	<aop:pointcut expression="execution(public * cn.bukaa.service.*Service.*(..))" id="txServicePoint"/>	       	          	   	     	
      	<aop:advisor advice-ref="txAdvice" pointcut-ref="txServicePoint" order="1000"/>
+     </aop:config>
+     
+     <!-- 事务管理 -->
+	<bean id="transactionManager_orcl" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource_orcl"/>
+	</bean>
+	
+	<!-- 使用annotation定义事务 	-->
+	<tx:annotation-driven transaction-manager="transactionManager_orcl" proxy-target-class="true" order="999" />
+	
+	<!-- 定义声明式事务 -->
+    <tx:advice id="txAdvice_orcl" transaction-manager="transactionManager_orcl">
+          <tx:attributes>           
+             <tx:method name="get*Data" read-only="true" propagation="SUPPORTS"/>
+             <tx:method name="find*" read-only="true" propagation="SUPPORTS"/>
+             <tx:method name="save*" propagation="REQUIRED" rollback-for="Exception" />
+             <tx:method name="update*" propagation="REQUIRED" rollback-for="Exception" />
+             <tx:method name="delete*" propagation="REQUIRED" rollback-for="Exception" />
+             <tx:method name="execute*" propagation="REQUIRED" rollback-for="Exception" />
+             <tx:method name="synch*" propagation="REQUIRED" rollback-for="Exception" />
+             <tx:method name="init*" propagation="REQUIRED" rollback-for="Exception" />
+         </tx:attributes>
+     </tx:advice>
+     
+     <aop:aspectj-autoproxy proxy-target-class="true"/>
+     
+     <aop:config>
+     	<aop:pointcut expression="execution(public * cn.bukaa.service.*Service.*(..))" id="txServicePoint_orcl"/>	       	          	   	     	
+     	<aop:advisor advice-ref="txAdvice_orcl" pointcut-ref="txServicePoint_orcl" order="1000"/>
      </aop:config>
 </beans>
