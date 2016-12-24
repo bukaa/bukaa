@@ -127,7 +127,7 @@
 	<tx:annotation-driven transaction-manager="transactionManager_orcl" proxy-target-class="true" order="999" />
 	
 	<!-- 定义声明式事务 -->
-    <tx:advice id="txAdvice_orcl" transaction-manager="transactionManager_orcl">
+    <!-- <tx:advice id="txAdvice_orcl" transaction-manager="transactionManager_orcl">
           <tx:attributes>           
              <tx:method name="get*Data" read-only="true" propagation="SUPPORTS"/>
              <tx:method name="find*" read-only="true" propagation="SUPPORTS"/>
@@ -145,5 +145,5 @@
      <aop:config>
      	<aop:pointcut expression="execution(public * cn.bukaa.service.*Service.*(..))" id="txServicePoint_orcl"/>	       	          	   	     	
      	<aop:advisor advice-ref="txAdvice_orcl" pointcut-ref="txServicePoint_orcl" order="1000"/>
-     </aop:config>
+     </aop:config> -->
 </beans>

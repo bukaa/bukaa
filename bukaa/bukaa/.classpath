@@ -8,7 +8,6 @@
 	<classpathentry kind="lib" path="lib/aspectjrt-1.8.0.jar"/>
 	<classpathentry kind="lib" path="lib/aspectjweaver-1.8.0.jar"/>
 	<classpathentry kind="lib" path="lib/commons-codec-1.9.jar"/>
-	<classpathentry kind="lib" path="lib/commons-dbcp-1.2.2.jar"/>
 	<classpathentry kind="lib" path="lib/commons-fileupload-1.3.1.jar"/>
 	<classpathentry kind="lib" path="lib/commons-httpclient-3.0.jar"/>
 	<classpathentry kind="lib" path="lib/commons-io-2.4.jar"/>
@@ -32,7 +31,7 @@
 	<classpathentry kind="lib" path="lib/mybatis-spring-1.2.2.jar" sourcepath="lib/mybatis-spring-1.2.2-sources.jar"/>
 	<classpathentry kind="lib" path="lib/mysql-connector-java-5.1.30.jar"/>
 	<classpathentry kind="lib" path="lib/ojdbc14-10.2.0.1.0.jar"/>
-	<classpathentry kind="lib" path="lib/pagehelper-4.1.3.jar"/>
+	<classpathentry kind="lib" path="lib/pagehelper-4.1.3.jar" sourcepath="lib/pagehelper-4.1.3-sources.jar"/>
 	<classpathentry kind="lib" path="lib/slf4j-api-1.7.7.jar"/>
 	<classpathentry kind="lib" path="lib/slf4j-log4j12-1.7.7.jar"/>
 	<classpathentry kind="lib" path="lib/spring-aop-4.0.2.RELEASE.jar" sourcepath="lib/spring-aop-4.0.2.RELEASE-sources.jar"/>
@@ -55,6 +54,15 @@
 	<classpathentry kind="lib" path="lib/spring-integration-core-4.0.2.RELEASE.jar" sourcepath="I:/文档/java资料/spring4.0.2源碼/spring-integration-core-4.0.2.RELEASE-sources.jar"/>
 	<classpathentry kind="lib" path="lib/spring-jms-4.0.2.RELEASE.jar" sourcepath="lib/spring-jms-4.0.2.RELEASE-sources.jar"/>
 	<classpathentry kind="lib" path="lib/mybatis-3.2.8.jar" sourcepath="lib/mybatis-3.2.8-sources.jar"/>
+	<classpathentry kind="lib" path="lib/jta-1.1.jar" sourcepath="lib/jta-1.1-sources.jar"/>
+	<classpathentry kind="lib" path="lib/atomikos-util-4.0.4.jar" sourcepath="lib/atomikos-util-4.0.4-sources.jar"/>
+	<classpathentry kind="lib" path="lib/transactions-4.0.4.jar" sourcepath="lib/transactions-4.0.4-sources.jar"/>
+	<classpathentry kind="lib" path="lib/transactions-api-4.0.4.jar" sourcepath="lib/transactions-api-4.0.4-sources.jar"/>
+	<classpathentry kind="lib" path="lib/transactions-jdbc-4.0.4.jar" sourcepath="lib/transactions-jdbc-4.0.4-sources.jar"/>
+	<classpathentry kind="lib" path="lib/transactions-jms-4.0.4.jar" sourcepath="lib/transactions-jms-4.0.4-sources.jar"/>
+	<classpathentry kind="lib" path="lib/transactions-jndi-provider-4.0.4.jar" sourcepath="lib/transactions-jndi-provider-4.0.4-sources.jar"/>
+	<classpathentry kind="lib" path="lib/transactions-jta-4.0.4.jar" sourcepath="lib/transactions-jta-4.0.4-sources.jar"/>
+	<classpathentry kind="lib" path="lib/commons-dbcp-1.4.jar" sourcepath="lib/commons-dbcp-1.4-sources.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="output" path="WebRoot/WEB-INF/classes"/>

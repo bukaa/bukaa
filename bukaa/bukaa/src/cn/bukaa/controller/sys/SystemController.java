@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import redis.clients.jedis.Jedis;
-import redis.clients.jedis.JedisPool;
 import cn.bukaa.dao.entity.sys.SysMenu;
 import cn.bukaa.service.ISysMenuService;
 import cn.bukaa.util.redis.RedisUtil;
