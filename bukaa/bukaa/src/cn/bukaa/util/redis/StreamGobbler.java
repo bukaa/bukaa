@@ -29,9 +29,7 @@ public class StreamGobbler extends Thread {
             while ((line = br.readLine()) != null){
             	System.out.println(type + ">" + line);
             }
-		}
-		catch (IOException e)
-		{
+		} catch (IOException e){
 			e.printStackTrace();
 		}
 	}
