@@ -44,7 +44,6 @@ public class SysUserService implements ISysUserService {
 		return dao.findById(id);
 	}
 
-	@Transactional
 	public SysUser findUserByLoginId(String loginId) {
 		return dao.findUserByLoginId(loginId);
 	}
