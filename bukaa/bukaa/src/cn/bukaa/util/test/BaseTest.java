@@ -7,7 +7,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.alibaba.fastjson.JSON;
 
 @RunWith(JUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "file:etc/classes/test/spring-mvc.xml", "file:etc/classes/test/spring-dao.xml"})
@@ -22,6 +21,6 @@ public class BaseTest {
 	 * @param obj
 	 */
 	public void toJsonString(Object obj){
-		logger.info("\n###################\n"+JSON.toJSON(obj).toString()+"\n###################");
+		//logger.info("\n###################\n"+JSON.toJSON(obj).toString()+"\n###################");
 	}
 }

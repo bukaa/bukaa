@@ -43,6 +43,14 @@ public class UserController extends CommonController<SysUser>{
 		whereStr.append("and p.is_disabled='0' and p.is_del='0'");
 		return new PageInfo<SysUser>(uService.findByWhereStr(whereStr.toString(), "", "", start, size));
 	}
+	
+	@ResponseBody
+	@RequestMapping(value="/test2", method=RequestMethod.GET)
+	public SysUser test2(){
+		StringBuilder whereStr = new StringBuilder("1 = 1 ");
+		whereStr.append("and p.is_disabled='0' and p.is_del='0'");
+		return uService.findByWhereStr(whereStr.toString(), "", "", 1, 10).get(0);
+	}
 
 	/**
 	 * 转向到列表页面

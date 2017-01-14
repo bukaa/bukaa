@@ -16,47 +16,16 @@
 						http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
 						http://www.springframework.org/schema/task
 						http://www.springframework.org/schema/task/spring-task-4.0.xsd">
-	
+						
 	<!-- 自动扫描的包名 -->
 	<context:component-scan base-package="cn.bukaa.controller"/>
-        
-	<!-- 默认的注解映射的支持 -->  
-    <mvc:annotation-driven/>
-	  
-	<!-- 对静态资源文件的访问  -->    
-	<mvc:default-servlet-handler/> 
-	
-	<!-- 扫描定时任务，并配置线程池大小 -->
+    
+    <!-- 扫描定时任务，并配置线程池大小 -->
 	<task:annotation-driven scheduler="myScheduler"/>
 	<task:scheduler id="myScheduler" pool-size="10"/>
-    
-	<!-- 避免JSON下载 -->
-	<bean id="mappingFastJsonHttpMessageConverter" class="com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter">
-		<property name="supportedMediaTypes">
-			<list>
-            	<value>text/html;charset=UTF-8</value>
-                <value>application/json</value>
-            </list>
-        </property>
-        <property name="features">
-            <list>
-                <value>WriteMapNullValue</value>
-                <value>WriteNullStringAsEmpty</value>
-                <value>QuoteFieldNames</value>
-                <value>WriteDateUseDateFormat</value>
-            </list>
-        </property>
-	</bean>
 	
-	<!-- 启动SpringMVC的注解功能 -->
-	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
-		<property name="messageConverters">
-			<list>
-				<bean class="org.springframework.http.converter.StringHttpMessageConverter" />
-				<ref bean="mappingFastJsonHttpMessageConverter"/>
-			</list>
-		</property>
-	</bean>
+	<!-- 对静态资源文件的访问  -->    
+	<mvc:default-servlet-handler/> 
 	
 	<!-- 静态文件 
     <mvc:resources location="/assets/" mapping="/assets/**"></mvc:resources>

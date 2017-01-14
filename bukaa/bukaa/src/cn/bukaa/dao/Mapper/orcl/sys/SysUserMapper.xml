@@ -22,7 +22,7 @@
 	    <result column="add_user" property="addUser" jdbcType="VARCHAR" />
 	    <result column="add_time" property="addTime" jdbcType="TIMESTAMP" />
   	</resultMap>
-	
+
 	<!-- 表名 -->
 	<sql id="tableNameSql">
 		sys_user
@@ -120,7 +120,7 @@
     	</set>
     	where <include refid="idSql"/>
   	</update>
-  
+
   	<!-- 根据主键删除 -->
   	<delete id="deleteById" parameterType="java.lang.String" >
     	delete from <include refid="tableNameSql"/> where <include refid="idSql"/>

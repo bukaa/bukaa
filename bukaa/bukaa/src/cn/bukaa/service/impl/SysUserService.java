@@ -1,5 +1,6 @@
 package cn.bukaa.service.impl;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -23,7 +24,7 @@ public class SysUserService implements ISysUserService {
 	
 	@Override
 	public List<SysUser> findByWhereStr(String whereStr, String orderField, String order, int start, int size){
-		List<SysUser> user_orcl = dao_orcl.findByWhereStr(whereStr, orderField, order, new RowBounds(start, size));
+		List<SysUser> user_orcl = new ArrayList<SysUser>(); //dao_orcl.findByWhereStr(whereStr, orderField, order, new RowBounds(start, size));
 		List<SysUser> user_mysql = dao.findByWhereStr(whereStr, orderField, order, new RowBounds(start, size));
 		if(user_orcl.size()>user_mysql.size()){
 			for (SysUser u : user_mysql) {

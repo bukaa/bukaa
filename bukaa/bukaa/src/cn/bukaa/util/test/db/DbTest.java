@@ -13,8 +13,6 @@ import cn.bukaa.dao.Mapper.orcl.sys.SysUserMapper;
 import cn.bukaa.dao.entity.sys.SysUser;
 import cn.bukaa.service.ISysUserService;
 import cn.bukaa.util.test.BaseTest;
-
-import com.alibaba.fastjson.JSON;
 public class DbTest extends BaseTest{
 	
 	@Autowired
@@ -71,7 +69,7 @@ public class DbTest extends BaseTest{
 	
 	@Test
 	public void testAtomis(){
-		JSON.parseObject("", new SysUser().getClass());
+		//JSON.parseObject("", new SysUser().getClass());
 	}
 
 }

@@ -15,11 +15,8 @@
 	<classpathentry kind="lib" path="lib/commons-net-3.1.jar"/>
 	<classpathentry kind="lib" path="lib/db-meta-0.0.1-Release.jar"/>
 	<classpathentry kind="lib" path="lib/dom4j-1.6.1.jar"/>
-	<classpathentry kind="lib" path="lib/fastjson-1.1.41.jar"/>
 	<classpathentry kind="lib" path="lib/freemarker.jar"/>
 	<classpathentry kind="lib" path="lib/groovy-all-2.1.7.jar"/>
-	<classpathentry kind="lib" path="lib/jackson-core-asl-1.9.13.jar"/>
-	<classpathentry kind="lib" path="lib/jackson-mapper-asl-1.9.13.jar"/>
 	<classpathentry kind="lib" path="lib/javax.persistence.jar"/>
 	<classpathentry kind="lib" path="lib/jaxen-1.1.4.jar"/>
 	<classpathentry kind="lib" path="lib/json-simple-1.1.jar"/>
@@ -63,6 +60,12 @@
 	<classpathentry kind="lib" path="lib/transactions-jndi-provider-4.0.4.jar" sourcepath="lib/transactions-jndi-provider-4.0.4-sources.jar"/>
 	<classpathentry kind="lib" path="lib/transactions-jta-4.0.4.jar" sourcepath="lib/transactions-jta-4.0.4-sources.jar"/>
 	<classpathentry kind="lib" path="lib/commons-dbcp-1.4.jar" sourcepath="lib/commons-dbcp-1.4-sources.jar"/>
+	<classpathentry kind="lib" path="lib/spring-orm-4.0.2.RELEASE.jar" sourcepath="lib/spring-oxm-4.0.2.RELEASE-sources.jar"/>
+	<classpathentry kind="lib" path="lib/junit-4.12.jar"/>
+	<classpathentry kind="lib" path="lib/fastjson-1.2.23.jar"/>
+	<classpathentry kind="lib" path="lib/jackson-core-asl-1.9.13.jar"/>
+	<classpathentry kind="lib" path="lib/jackson-mapper-asl-1.9.13.jar"/>
+	<classpathentry kind="lib" path="lib/jackson-mapper-lgpl-1.9.13.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="output" path="WebRoot/WEB-INF/classes"/>
