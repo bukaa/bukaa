@@ -1,4 +1,4 @@
-package cn.bukaa.service.impl;
+package cn.bukaa.service.sys.impl;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 import cn.bukaa.dao.Mapper.mysql.sys.UserMapper;
 import cn.bukaa.dao.Mapper.orcl.sys.SysUserMapper;
 import cn.bukaa.dao.entity.sys.SysUser;
-import cn.bukaa.service.ISysUserService;
+import cn.bukaa.service.sys.ISysUserService;
 
 @Service
 public class SysUserService implements ISysUserService {

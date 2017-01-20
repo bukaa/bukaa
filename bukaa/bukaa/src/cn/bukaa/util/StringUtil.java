@@ -9,6 +9,10 @@ public class StringUtil {
 	public static final boolean isNotEmpty(String str){
 		return (str != null) && !"".equals(str.trim());
 	}
+	
+	public static final boolean isEmpty(String str){
+		return !isNotEmpty(str);
+	}
 
 	
 	public static String urlDecode(String str, String charset) {

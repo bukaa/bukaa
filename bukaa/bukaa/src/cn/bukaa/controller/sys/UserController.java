@@ -17,7 +17,7 @@ import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 
 import cn.bukaa.controller.common.CommonController;
 import cn.bukaa.dao.entity.sys.SysUser;
-import cn.bukaa.service.ISysUserService;
+import cn.bukaa.service.sys.ISysUserService;
 
 import com.github.pagehelper.PageInfo;
 

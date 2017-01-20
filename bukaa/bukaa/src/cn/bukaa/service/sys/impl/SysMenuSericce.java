@@ -1,4 +1,4 @@
-package cn.bukaa.service.impl;
+package cn.bukaa.service.sys.impl;
 
 import java.util.List;
 
@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import cn.bukaa.dao.Mapper.mysql.sys.MenuMapper;
 import cn.bukaa.dao.entity.sys.SysMenu;
-import cn.bukaa.service.ISysMenuService;
+import cn.bukaa.service.sys.ISysMenuService;
 
 @Service
 public class SysMenuSericce implements ISysMenuService {

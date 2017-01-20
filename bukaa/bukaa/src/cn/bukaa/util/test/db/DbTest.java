@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import cn.bukaa.dao.Mapper.mysql.sys.UserMapper;
 import cn.bukaa.dao.Mapper.orcl.sys.SysUserMapper;
 import cn.bukaa.dao.entity.sys.SysUser;
-import cn.bukaa.service.ISysUserService;
+import cn.bukaa.service.sys.ISysUserService;
 import cn.bukaa.util.test.BaseTest;
 public class DbTest extends BaseTest{
 	

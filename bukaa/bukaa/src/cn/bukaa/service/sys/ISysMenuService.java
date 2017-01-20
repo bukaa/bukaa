@@ -1,4 +1,4 @@
-package cn.bukaa.service;
+package cn.bukaa.service.sys;
 
 import java.util.List;
 

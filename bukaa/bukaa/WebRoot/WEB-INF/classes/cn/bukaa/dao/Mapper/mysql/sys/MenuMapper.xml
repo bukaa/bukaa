@@ -23,7 +23,7 @@
   	<sql id="insertListSql">
     	id, parent_id, name, is_del, add_time
   	</sql>
-  	
+   
   	<!-- 按主键查找条件语句 -->
   	<sql id="idSql">
   		id = #{id,jdbcType=VARCHAR}

@@ -34,10 +34,10 @@
 	<!-- The "help" target is used to display the helping message  -->
 	<!-- ==================================================================== -->
 	
-	<taskdef name="mytask" classname="cn.bukaa.util.ant.AutoBuildUtil" classpath="${build.dir}/classes">
+	<taskdef name="mytask" classname="cn.bukaa.util.ant.AutoBuildUtil">
 		<classpath>
-			<fileset dir="${build.dir}/classes/cn/bukaa/util/ant" >
-				<include name="cn.bukaa.util.ant.AutoBuildUtil" />
+			<fileset dir="${basedir}/lib">
+				<include name="build.jar" />
 			</fileset>
 		</classpath>
 	</taskdef>

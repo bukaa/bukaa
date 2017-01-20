@@ -155,7 +155,7 @@
 	<!-- The "clean" target is used to clean output directories -->
 	<!-- ==================================================================== -->
 	<target name="clean" description="清除输出目录（包括Tomcat目录和Classes目录）">
-		<delete dir="${build.dir}/classes" />
+		<!--<delete dir="${build.dir}/classes" /> -->
 		<delete file="${war.dir}/bukaa.war" />
 		<delete dir="${tomcat.home}/webapps/${webapp.name}" />
 		<echo message="清除输出目录（包括Tomcat目录和Classes目录）完成" />

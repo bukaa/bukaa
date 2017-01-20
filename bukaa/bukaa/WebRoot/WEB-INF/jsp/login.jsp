@@ -7,7 +7,9 @@
 	<head>
 		<%@ include file="/head.jsp"%>
 		<link href="${ctx}/static/h+/4.1.0/css/login.css" rel="stylesheet">
+		<link href="${ctx}/static/h+/4.1.0/js/login/convertor.js" rel="stylesheet">
 		<title>BUKAA</title>
+		<script src="http://api.map.baidu.com/api?v=1.3" type="text/javascript">
 		<script type="text/javascript">
 			$(function(){
 				var errorMessage = $("#errorMessage").val();
