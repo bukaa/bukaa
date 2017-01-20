@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.bukaa.dao.Mapper.mysql.common.ReviewsMapper" >
+  	<resultMap id="BaseResultMap" type="cn.bukaa.dao.entity.common.Reviews" >
+	    <id column="id" property="id" jdbcType="VARCHAR" />
+	    <result column="bh" property="bh" jdbcType="TIMESTAMP" />
+	    <result column="movieBh" property="movieBh" jdbcType="TIMESTAMP" />
+	    <result column="author" property="author" jdbcType="TIMESTAMP" />
+	    <result column="shortContent" property="shortContent" jdbcType="TIMESTAMP" />
+	    <result column="title" property="title" jdbcType="VARCHAR" />
+	    <result column="titleLink" property="titleLink" jdbcType="VARCHAR" />
+	    <result column="username" property="username" jdbcType="VARCHAR" />
+	    <result column="userPhotoUrl" property="userPhotoUrl" jdbcType="VARCHAR" />
+	    <result column="star" property="star" jdbcType="VARCHAR" />
+	    <result column="time" property="time" jdbcType="VARCHAR" />
+	    <result column="body" property="body" jdbcType="BLOB" />
+	    <result column="html" property="html" jdbcType="BLOB" />
+	    <result column="voteScript" property="voteScript" jdbcType="BLOB" />
+	    <result column="votes" property="votes" jdbcType="BLOB" />
+	    <result column="addtime" property="addtime" jdbcType="VARCHAR" />
+	    <result column="updatetime" property="updatetime" jdbcType="TIMESTAMP" />
+  	</resultMap>
+
+	<!-- 表名 -->
+	<sql id="tableNameSql">
+		reviews
+	</sql>
+	
+	<!-- 列集合语句 -->
+  	<sql id="columnListSql">
+    	* 
+  	</sql>
+  	
+  	<!-- 插入集合语句 -->
+  	<sql id="insertListSql">
+    	
+  	</sql>
+  	
+  	<!-- 按主键查找条件语句 -->
+  	<sql id="idSql">
+  		id = #{id,jdbcType=VARCHAR}
+  	</sql>
+  	
+  	<sql id="bhSql">
+  		bh = #{bh,jdbcType=VARCHAR}
+  	</sql>
+  	
+  	<!-- 主查询语句 -->
+  	<sql id="mainSql">
+  		select <include refid="columnListSql"/> from <include refid="tableNameSql"/> p
+  	</sql>
+  	
+  	<!-- 查询变量语句(使用like) -->
+  	<sql id="searchSql">
+  		<where>
+  			<if test="title != null and title != ''" >and p.title like concat('%', #{title}, '%')</if>
+  		</where>
+  	</sql>
+
+  	<select id="findByWhereStr" resultMap="BaseResultMap">
+  		select <include refid="columnListSql"/> from <include refid="tableNameSql"/> p 
+  		<where>
+	  		<if test="whereStr != null and whereStr != ''">
+	  			${whereStr}
+	  		</if>
+  		</where>
+  		<if test="orderField != null and orderField != '' and order != null and order != ''">
+  			order by ${orderField} ${order}
+  		</if>
+  	</select>
+  	
+  	<select id="findById" resultMap="BaseResultMap">
+  		select <include refid="columnListSql"/> from <include refid="tableNameSql"/> p  where <include refid="idSql"/>
+  	</select>
+  	
+  	<select id="findByBh" resultMap="BaseResultMap">
+  		select <include refid="columnListSql"/> from <include refid="tableNameSql"/> p  where <include refid="bhSql"/>
+  	</select>
+  	
+  	<!-- 根据主键删除 -->
+  	<delete id="deleteById" parameterType="java.lang.String" >
+    	delete from <include refid="tableNameSql"/> where <include refid="idSql"/>
+  	</delete>
+  	
+  	<!-- 根据多个主键删除 -->
+  	<delete id="deleteByBh" parameterType="java.lang.String" >
+    	delete from <include refid="tableNameSql"/> where id <include refid="bhSql"/>
+  	</delete>
+  	
+</mapper>

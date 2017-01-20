@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.bukaa.dao.Mapper.mysql.common.MovieMapper" >
+  	<resultMap id="BaseResultMap" type="cn.bukaa.dao.entity.common.Movie" >
+	    <id column="id" property="id" jdbcType="VARCHAR" />
+	    <result column="title" property="title" jdbcType="VARCHAR" />
+	    <result column="source" property="source" jdbcType="VARCHAR" />
+	    <result column="imgUrl" property="imgUrl" jdbcType="VARCHAR" />
+	    <result column="url" property="url" jdbcType="VARCHAR" />
+	    <result column="star" property="star" jdbcType="VARCHAR" />
+	    <result column="rate" property="rate" jdbcType="VARCHAR" />
+	    <result column="amount" property="amount" jdbcType="VARCHAR" />
+	    <result column="directors" property="directors" jdbcType="VARCHAR" />
+	    <result column="actors" property="actors" jdbcType="VARCHAR" />
+	    <result column="types" property="types" jdbcType="VARCHAR" />
+	    <result column="time" property="time" jdbcType="VARCHAR" />
+	    <result column="bh" property="bh" jdbcType="TIMESTAMP" />
+	    <result column="imgPath" property="imgPath" jdbcType="VARCHAR" />
+	    <result column="addtime" property="addtime" jdbcType="TIMESTAMP" />
+	    <result column="isDel" property="isDel" jdbcType="VARCHAR" />
+	    <result column="shortComment" property="shortComment" jdbcType="VARCHAR" />
+	    <result column="region" property="region" jdbcType="VARCHAR" />
+	    <result column="isTv" property="isTv" jdbcType="VARCHAR" />
+	    <result column="playable" property="playable" jdbcType="VARCHAR" />
+	    <result column="subtype" property="subtype" jdbcType="VARCHAR" />
+	    <result column="duration" property="duration" jdbcType="VARCHAR" />
+	    <result column="screenwriters" property="screenwriters" jdbcType="VARCHAR" />
+	    <result column="language" property="language" jdbcType="VARCHAR" />
+	    <result column="officialWebsite" property="officialWebsite" jdbcType="VARCHAR" />
+	    <result column="otherName" property="otherName" jdbcType="VARCHAR" />
+	    <result column="imdbUrl" property="imdbUrl" jdbcType="VARCHAR" />
+	    <result column="introduction" property="introduction" jdbcType="VARCHAR" />
+	    <result column="releaseYear" property="releaseYear" jdbcType="VARCHAR" />
+	    <result column="updatetime" property="updatetime" jdbcType="TIMESTAMP" />
+	    <result column="releaseTime" property="releaseTime" jdbcType="VARCHAR" />
+  	</resultMap>
+
+	<!-- 表名 -->
+	<sql id="tableNameSql">
+		movie
+	</sql>
+	
+	<!-- 列集合语句 -->
+  	<sql id="columnListSql">
+    	*
+  	</sql>
+  	<sql id="common_columnListSql">
+    	bh, title, imgUrl, star, rate
+  	</sql>
+  	
+  	<!-- 插入集合语句 -->
+  	<sql id="insertListSql">
+    	
+  	</sql>
+  	
+  	<!-- 按主键查找条件语句 -->
+  	<sql id="idSql">
+  		id = #{id,jdbcType=VARCHAR}
+  	</sql>
+  	
+  	<sql id="bhSql">
+  		bh = #{bh,jdbcType=VARCHAR}
+  	</sql>
+  	
+  	<!-- 主查询语句 -->
+  	<sql id="mainSql">
+  		select <include refid="columnListSql"/> from <include refid="tableNameSql"/> p
+  	</sql>
+  	
+  	<!-- 查询变量语句(使用like) -->
+  	<sql id="searchSql">
+  		<where>
+  			<if test="title != null and title != ''" >and p.title like concat('%', #{title}, '%')</if>
+  		</where>
+  	</sql>
+
+  	<select id="findByWhereStr" resultMap="BaseResultMap">
+  		select <include refid="columnListSql"/> from <include refid="tableNameSql"/> p 
+  		<where>
+	  		<if test="whereStr != null and whereStr != ''">
+	  			${whereStr}
+	  		</if>
+  		</where>
+  		<if test="orderField != null and orderField != '' and order != null and order != ''">
+  			order by ${orderField} ${order}
+  		</if>
+  	</select>
+  	
+  	<select id="findCommonInfo" resultMap="BaseResultMap">
+  		select <include refid="common_columnListSql"/> from <include refid="tableNameSql"/> p 
+  		<where>
+	  		<if test="whereStr != null and whereStr != ''">
+	  			${whereStr}
+	  		</if>
+  		</where>
+  		<if test="orderField != null and orderField != '' and order != null and order != ''">
+  			order by ${orderField} ${order}
+  		</if>
+  	</select>
+  	
+  	<select id="findById" resultMap="BaseResultMap">
+  		select <include refid="columnListSql"/> from <include refid="tableNameSql"/> p  where <include refid="idSql"/>
+  	</select>
+  	
+  	<select id="findByBh" resultMap="BaseResultMap">
+  		select <include refid="columnListSql"/> from <include refid="tableNameSql"/> p  where <include refid="bhSql"/>
+  	</select>
+  	
+  	<!-- 根据主键删除 -->
+  	<delete id="deleteById" parameterType="java.lang.String" >
+    	delete from <include refid="tableNameSql"/> where <include refid="idSql"/>
+  	</delete>
+  	
+  	<!-- 根据多个主键删除 -->
+  	<delete id="deleteByBh" parameterType="java.lang.String" >
+    	delete from <include refid="tableNameSql"/> where id <include refid="bhSql"/>
+  	</delete>
+  	
+</mapper>
