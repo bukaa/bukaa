@@ -4,10 +4,9 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -45,6 +44,12 @@ public class ReviewsController extends CommonController<Movie>{
 	}
 	
 	@ResponseBody
+	@RequestMapping("{bh}")
+	public void findByBh(@PathVariable String bh, HttpServletResponse response){
+		renderToJson(JSONObject.toJSONString(biz.findByBh(bh)), response);
+	}
+	
+	/*@ResponseBody
 	@RequestMapping("findByBh")
 	public void findByBh(String bh, HttpServletResponse response){
 		Reviews reviews = biz.findByBh(bh);
@@ -54,7 +59,7 @@ public class ReviewsController extends CommonController<Movie>{
 			renderToJson(JSONObject.toJSONString(doc), response);
 		}
 		renderToJson(JSONObject.toJSONString(biz.findByBh(bh)), response);
-	}
+	}*/
 	
 	public void findByMovieBh(String movie_bh,int page, int size, HttpServletResponse response){
 		if(StringUtil.isEmpty(movie_bh)){
