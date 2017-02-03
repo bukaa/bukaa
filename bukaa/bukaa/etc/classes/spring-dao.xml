@@ -30,7 +30,7 @@
 	    </property>  
 	</bean>
 	
-	<!-- 数据源配置 -->
+	<!-- 数据源配置,使用AtomikosNonXADataSourceBean,可实现多数据源的事务管理 -->
 	<bean id="dataSource" class="com.atomikos.jdbc.nonxa.AtomikosNonXADataSourceBean">
 		<property name="uniqueResourceName" value="atomikosNonXADS1"></property>
 		<property name="driverClassName" value="${mysql.jdbc.driver}"/>
