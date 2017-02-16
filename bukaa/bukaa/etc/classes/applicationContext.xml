@@ -66,6 +66,6 @@
     </bean>
     
     <import resource="classpath*:spring-task.xml"/>
-    <import resource="classpath*:spring-cache.xml"/>
+    <import resource="classpath*:spring-redis.xml"/>
     
 </beans>

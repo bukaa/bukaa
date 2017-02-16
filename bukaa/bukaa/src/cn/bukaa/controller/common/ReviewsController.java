@@ -6,7 +6,6 @@ import java.util.Map;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.Cache;
 import org.springframework.cache.CacheManager;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Controller;
@@ -58,18 +57,17 @@ public class ReviewsController extends CommonController<Movie>{
 	@ResponseBody
 	@RequestMapping("{bh}")
 	public Reviews findByBh(@PathVariable String bh){
-		System.out.println(bh);
-		Reviews reviews = biz.findByBh(bh);
+		Reviews reviews = redisTemplate.opsForValue().get(bh);
 		if(reviews != null){
-			String title = reviews.getTitle();
-			if(StringUtil.isNotEmpty(title) && title.length() > 6){
-				reviews.setTitle(title.substring(0, 6)+"...");
+			reviews = biz.findByBh(bh);
+			if(reviews != null){
+				String title = reviews.getTitle();
+				if(StringUtil.isNotEmpty(title) && title.length() > 6){
+					reviews.setTitle(title.substring(0, 6)+"...");
+				}
+				redisTemplate.opsForValue().set(bh, reviews);
 			}
 		}
-		logger.info(redisTemplate.opsForList().range(bh, 0, 10));
-		Cache cache = cacheManager.getCache(bh);
-		Reviews re = cache.get(bh, Reviews.class);
-		logger.info(re);
 		return reviews;
 	}
 	
