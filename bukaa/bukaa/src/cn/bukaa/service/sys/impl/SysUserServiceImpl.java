@@ -14,7 +14,7 @@ import cn.bukaa.dao.entity.sys.SysUser;
 import cn.bukaa.service.sys.ISysUserService;
 
 @Service
-public class SysUserService implements ISysUserService {
+public class SysUserServiceImpl implements ISysUserService {
 	
 	@Autowired
 	private UserMapper dao;

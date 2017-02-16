@@ -10,7 +10,7 @@ import cn.bukaa.dao.entity.sys.SysMenu;
 import cn.bukaa.service.sys.ISysMenuService;
 
 @Service
-public class SysMenuSericce implements ISysMenuService {
+public class SysMenuSericceImpl implements ISysMenuService {
 	
 	@Autowired
 	private MenuMapper dao;

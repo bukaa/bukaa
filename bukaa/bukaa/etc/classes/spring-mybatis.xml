@@ -114,7 +114,7 @@
      <aop:aspectj-autoproxy proxy-target-class="true"/>
      
      <aop:config>
-     	<aop:pointcut expression="execution(public * cn.bukaa.service.*Service.*(..))" id="txServicePoint"/>	       	          	   	     	
+     	<aop:pointcut expression="execution(public * cn.bukaa.service.*.impl.*.*(..))" id="txServicePoint"/>	       	          	   	     	
      	<aop:advisor advice-ref="txAdvice" pointcut-ref="txServicePoint" order="1000"/>
      </aop:config>
      
