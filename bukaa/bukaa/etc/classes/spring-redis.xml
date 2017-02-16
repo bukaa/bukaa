@@ -11,12 +11,6 @@
                         http://www.springframework.org/schema/cache
                         http://www.springframework.org/schema/cache/spring-cache-4.0.xsd">
     
-    <cache:annotation-driven cache-manager="cacheManager"/>
-    
-    <bean id="cacheManager" class="org.springframework.data.redis.cache.RedisCacheManager">
-    	<constructor-arg name="template" ref="redisTemplate"></constructor-arg>
-    </bean>
-    
     <!-- 引入配置文件 -->
 	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">  
 	    <property name="locations">  

@@ -100,7 +100,7 @@
 	<!-- 定义声明式事务 -->
     <tx:advice id="txAdvice" transaction-manager="transactionManager">
           <tx:attributes>           
-             <tx:method name="get*Data" read-only="true" propagation="SUPPORTS"/>
+             <tx:method name="get*" read-only="true" propagation="SUPPORTS"/>
              <tx:method name="find*" read-only="true" propagation="SUPPORTS"/>
              <tx:method name="save*" propagation="REQUIRED" rollback-for="Exception" />
              <tx:method name="update*" propagation="REQUIRED" rollback-for="Exception" />

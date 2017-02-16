@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import cn.bukaa.dao.Mapper.mysql.common.MovieMapper;
@@ -22,6 +23,7 @@ public class MovieServiceImpl implements IMovieService{
 	}
 
 	@Override
+	@Cacheable(value="movie", key="#bh")
 	public Movie findByBh(String bh) {
 		return dao.findByBh(bh);
 	}

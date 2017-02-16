@@ -23,7 +23,7 @@ public class ReviewsServiceImpl implements IReviewsService{
 	}
 
 	@Override
-	@Cacheable(key="#bh+'reviews'",value="reviews")
+	@Cacheable(value="reviews", key="#bh")
 	public Reviews findByBh(String bh) {
 		return dao.findByBh(bh);
 	}
