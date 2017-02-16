@@ -134,10 +134,12 @@ public class Reviews implements java.io.Serializable {
 	}
 
 	public String getHtml() {
-		try {
-			return new String(this.html, "UTF-8");
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
+		if(this.html != null){
+			try {
+				return new String(this.html, "UTF-8");
+			} catch (UnsupportedEncodingException e) {
+				e.printStackTrace();
+			}
 		}
 		return "";
 	}

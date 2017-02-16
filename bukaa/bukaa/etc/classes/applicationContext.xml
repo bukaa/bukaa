@@ -20,7 +20,7 @@
 						http://www.springframework.org/schema/task
 						http://www.springframework.org/schema/task/spring-task-4.0.xsd"
 	default-lazy-init="true">
-
+	
 	<description>Spring公共配置 </description>
 	
 	<!-- 使用annotation 自动注册bean, 并保证@Required、@Autowired的属性被注入 -->
@@ -65,21 +65,7 @@
         </property>
     </bean>
     
-    <!-- 扫描定时任务，并配置线程池大小 -->
-	<task:annotation-driven scheduler="myScheduler"/>
-	<task:scheduler id="myScheduler" pool-size="10"/>
-
-	<!-- taskExecutor线程池管理 -->
-	<beans>
-		<bean id="taskExecutor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
-		  <!-- 核心线程数 -->	 
-		  <property name="corePoolSize" value="${task.core_pool_size}" />
-		  <!-- 最大线程数 -->  
-		  <property name="maxPoolSize" value="${task.max_pool_size}" />
-		  <!-- 队列最大长度 -->
-		  <property name="queueCapacity" value="${task.queue_capacity}" />
-		  <!-- 线程池维护线程所允许的空闲时间，默认为60s -->
-		  <property name="keepAliveSeconds" value="${task.keep_alive_seconds}" />
-		</bean>
-	</beans>
+    <import resource="classpath*:spring-task.xml"/>
+    <import resource="classpath*:spring-cache.xml"/>
+    
 </beans>

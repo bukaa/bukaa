@@ -12,4 +12,7 @@ public interface IReviewsService {
 	
 	List<Reviews> findByWhereStr(String whereStr, String orderField, String order, int start, int size);
 
+	List<Reviews> findByMovieBh(String whereStr, String orderField, String order,
+			Integer page, Integer size);
+
 }

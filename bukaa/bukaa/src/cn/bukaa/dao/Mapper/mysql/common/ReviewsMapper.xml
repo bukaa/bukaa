@@ -13,9 +13,7 @@
 	    <result column="userPhotoUrl" property="userPhotoUrl" jdbcType="VARCHAR" />
 	    <result column="star" property="star" jdbcType="VARCHAR" />
 	    <result column="time" property="time" jdbcType="VARCHAR" />
-	    <result column="body" property="body" jdbcType="BLOB" />
 	    <result column="html" property="html" jdbcType="BLOB" />
-	    <result column="voteScript" property="voteScript" jdbcType="BLOB" />
 	    <result column="votes" property="votes" jdbcType="BLOB" />
 	    <result column="addtime" property="addtime" jdbcType="VARCHAR" />
 	    <result column="updatetime" property="updatetime" jdbcType="TIMESTAMP" />
@@ -29,6 +27,10 @@
 	<!-- 列集合语句 -->
   	<sql id="columnListSql">
     	* 
+  	</sql>
+  	
+  	<sql id="commonColumnList">
+    	id, bh, author, short_content, title, username, user_photo_url, star, time, votes
   	</sql>
   	
   	<!-- 插入集合语句 -->
@@ -59,6 +61,18 @@
 
   	<select id="findByWhereStr" resultMap="BaseResultMap">
   		select <include refid="columnListSql"/> from <include refid="tableNameSql"/> p 
+  		<where>
+	  		<if test="whereStr != null and whereStr != ''">
+	  			${whereStr}
+	  		</if>
+  		</where>
+  		<if test="orderField != null and orderField != '' and order != null and order != ''">
+  			order by ${orderField} ${order}
+  		</if>
+  	</select>
+  	
+  	<select id="findByMovieBh" resultMap="BaseResultMap">
+  		select <include refid="commonColumnList"/> from <include refid="tableNameSql"/> p 
   		<where>
 	  		<if test="whereStr != null and whereStr != ''">
 	  			${whereStr}

@@ -17,22 +17,22 @@
 	    <result column="bh" property="bh" jdbcType="TIMESTAMP" />
 	    <result column="imgPath" property="imgPath" jdbcType="VARCHAR" />
 	    <result column="addtime" property="addtime" jdbcType="TIMESTAMP" />
-	    <result column="isDel" property="isDel" jdbcType="VARCHAR" />
-	    <result column="shortComment" property="shortComment" jdbcType="VARCHAR" />
+	    <result column="is_del" property="isDel" jdbcType="VARCHAR" />
+	    <result column="short_comment" property="shortComment" jdbcType="VARCHAR" />
 	    <result column="region" property="region" jdbcType="VARCHAR" />
-	    <result column="isTv" property="isTv" jdbcType="VARCHAR" />
+	    <result column="is_tv" property="isTv" jdbcType="VARCHAR" />
 	    <result column="playable" property="playable" jdbcType="VARCHAR" />
 	    <result column="subtype" property="subtype" jdbcType="VARCHAR" />
 	    <result column="duration" property="duration" jdbcType="VARCHAR" />
 	    <result column="screenwriters" property="screenwriters" jdbcType="VARCHAR" />
 	    <result column="language" property="language" jdbcType="VARCHAR" />
 	    <result column="officialWebsite" property="officialWebsite" jdbcType="VARCHAR" />
-	    <result column="otherName" property="otherName" jdbcType="VARCHAR" />
+	    <result column="other_name" property="otherName" jdbcType="VARCHAR" />
 	    <result column="imdbUrl" property="imdbUrl" jdbcType="VARCHAR" />
 	    <result column="introduction" property="introduction" jdbcType="VARCHAR" />
-	    <result column="releaseYear" property="releaseYear" jdbcType="VARCHAR" />
+	    <result column="release_year" property="releaseYear" jdbcType="VARCHAR" />
 	    <result column="updatetime" property="updatetime" jdbcType="TIMESTAMP" />
-	    <result column="releaseTime" property="releaseTime" jdbcType="VARCHAR" />
+	    <result column="release_time" property="releaseTime" jdbcType="VARCHAR" />
   	</resultMap>
 
 	<!-- 表名 -->
@@ -45,7 +45,7 @@
     	*
   	</sql>
   	<sql id="common_columnListSql">
-    	bh, title, imgUrl, star, rate
+    	bh, title, imgUrl, star, rate, short_comment 
   	</sql>
   	
   	<!-- 插入集合语句 -->

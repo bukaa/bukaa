@@ -1,5 +1,8 @@
 package cn.bukaa.controller.common;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
@@ -7,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import cn.bukaa.service.sys.ISysUserService;
+import cn.bukaa.util.StringUtil;
 
 
 @Controller
@@ -34,6 +38,37 @@ public class CommonController<T>{
 	
 	public void renderToJson(String text, HttpServletResponse response){
 		renderToView("application/json", text, response);
+	}
+	
+	/**
+	 * 初始化page和size参数
+	 * @param page 传入的page
+	 * @param size 传入的size
+	 * @param maxSize 每页最大的记录数
+	 */
+	public Map<String, String> initPageAndSize(String page, String size, int maxSize){
+		Map<String, String> param = new HashMap<String, String>();
+		if(StringUtil.isEmpty(page)){
+			param.put("size", ""+maxSize);
+		}else{
+			try {
+				if(Integer.valueOf(size)>maxSize){
+					param.put("size", ""+maxSize);
+				}
+			} catch (Exception e) {
+				param.put("size", ""+maxSize);
+			}
+		}
+		if(StringUtil.isEmpty(page)){
+			param.put("page", "1");
+		}else{
+			try {
+				Integer.valueOf(page);
+			} catch (Exception e) {
+				param.put("page", "1");
+			}
+		}
+		return param;
 	}
 
 	

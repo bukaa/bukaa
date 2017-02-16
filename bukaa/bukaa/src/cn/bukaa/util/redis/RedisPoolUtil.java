@@ -28,10 +28,6 @@ public final class RedisPoolUtil {
     //访问密码
     private static String AUTH = "bukaa";
     
-    //可用连接实例的最大数目，默认值为8；
-    //如果赋值为-1，则表示不限制；如果pool已经分配了maxActive个jedis实例，则此时pool的状态为exhausted(耗尽)。
-    private static int MAX_ACTIVE = 1024;
-    
     //控制一个pool最多有多少个状态为idle(空闲的)的jedis实例，默认值也是8。
     private static int MAX_IDLE = 200;
     
@@ -68,10 +64,6 @@ public final class RedisPoolUtil {
         		//访问密码
         		AUTH = prop.getProperty("redis.auth");
         		
-        		//可用连接实例的最大数目，默认值为8；
-        		//如果赋值为-1，则表示不限制；如果pool已经分配了maxActive个jedis实例，则此时pool的状态为exhausted(耗尽)。
-        		MAX_ACTIVE = Integer.parseInt(prop.getProperty("redis.maxActive"));
-        		
         		//控制一个pool最多有多少个状态为idle(空闲的)的jedis实例，默认值也是8。
         		MAX_IDLE = Integer.parseInt(prop.getProperty("redis.maxIdle"));
         		
@@ -85,9 +77,8 @@ public final class RedisPoolUtil {
         	}
             
             JedisPoolConfig config = new JedisPoolConfig();
-            config.setMaxActive(MAX_ACTIVE);
             config.setMaxIdle(MAX_IDLE);
-            config.setMaxWait(MAX_WAIT);
+            config.setMaxWaitMillis(MAX_WAIT);
             config.setTestOnBorrow(TEST_ON_BORROW);
             jedisPool = new JedisPool(config, ADDR, PORT, TIMEOUT, AUTH);
             

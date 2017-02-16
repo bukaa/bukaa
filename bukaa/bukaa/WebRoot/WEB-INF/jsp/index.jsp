@@ -8,6 +8,14 @@
 		<%@ include file="/head.jsp"%>
 		<%@ include file="/list-css.jsp"%>
 		<title>BUKAA</title>
+		<script type="text/javascript">
+			var userInfo = new Vue({
+				el: '#userInfo',
+				data: {
+					username : 'bukaa'
+				}
+			});
+		</script>
 	</head>
 	<body class="fixed-sidebar full-height-layout gray-bg" style="overflow:hidden">
 	    <div id="wrapper">
@@ -17,7 +25,7 @@
 	            <div class="nav-close">
 	            	<i class="fa fa-times-circle"></i>
 	            </div>
-	            <div class="sidebar-collapse">
+	            <div class="sidebar-collapse"  id="userInfo">
 	                <ul class="nav" id="side-menu">
 	                    <li class="nav-header">
 	                        <div class="dropdown profile-element">
@@ -25,7 +33,7 @@
 	                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
 	                                <span class="clear">
 		                               	<span class="block m-t-xs"><strong class="font-bold">${user.loginId }</strong></span>
-		                                <span class="text-muted text-xs block">${user.realName }<b class="caret"></b></span>
+		                                <span class="text-muted text-xs block">{{username}}<b class="caret"></b></span>
 	                                </span>
 	                            </a>
 	                            <ul class="dropdown-menu animated fadeInRight m-t-xs">

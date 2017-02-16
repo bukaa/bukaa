@@ -18,4 +18,6 @@ public interface ReviewsMapper {
 
 	public Reviews findById(@Param("id") String id);
 
+	public List<Reviews> findByMovieBh(@Param("whereStr") String whereStr, @Param("orderField") String orderField, @Param("order") String order, RowBounds rowBounds);
+
 }

@@ -1,13 +1,16 @@
 package cn.bukaa.controller.common;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
 
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.Cache;
+import org.springframework.cache.CacheManager;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -27,13 +30,21 @@ public class ReviewsController extends CommonController<Movie>{
 	@Autowired
 	private IReviewsService biz;
 	
+	@Autowired
+	private CacheManager cacheManager;
+	
+	@Autowired
+	private RedisTemplate<String, Reviews> redisTemplate;
+	
+	@ResponseBody
 	@RequestMapping("find")
-	public void find(int page, int size, String orderField, HttpServletResponse response){
+	public PageInfo<Reviews> find(String page, String size, String orderField, HttpServletResponse response){
 		if(StringUtil.isEmpty(orderField)){
 			orderField = "time";
 		}
+		Map<String, String> param = initPageAndSize(page, size, 5);
 		StringBuilder whereStr = new StringBuilder("1 = 1 ");
-		List<Reviews> reviewsList = biz.findByWhereStr(whereStr.toString(), orderField, "desc", page, size);
+		List<Reviews> reviewsList = biz.findByWhereStr(whereStr.toString(), orderField, "desc", Integer.valueOf(param.get("page")), Integer.valueOf(param.get("size")));
 		String title = "";
 		for (Reviews m : reviewsList) {
 			title = m.getTitle();
@@ -41,26 +52,38 @@ public class ReviewsController extends CommonController<Movie>{
 				m.setTitle(title.substring(0, 6)+"...");
 			}
 		}
-		renderToJson(JSONObject.toJSONString(new PageInfo<Reviews>(reviewsList)), response);
+		return new PageInfo<Reviews>(reviewsList);
 	}
 	
 	@ResponseBody
-	@RequestMapping("findByBh")
-	public void findByBh(String bh, HttpServletResponse response){
+	@RequestMapping("{bh}")
+	public Reviews findByBh(@PathVariable String bh){
+		System.out.println(bh);
 		Reviews reviews = biz.findByBh(bh);
-		Document doc = null;
-		if(reviews != null && StringUtil.isNotEmpty(reviews.getHtml())){
-			doc = Jsoup.parse(reviews.getHtml());
-			renderToJson(JSONObject.toJSONString(doc), response);
+		if(reviews != null){
+			String title = reviews.getTitle();
+			if(StringUtil.isNotEmpty(title) && title.length() > 6){
+				reviews.setTitle(title.substring(0, 6)+"...");
+			}
 		}
-		renderToJson(JSONObject.toJSONString(biz.findByBh(bh)), response);
+		logger.info(redisTemplate.opsForList().range(bh, 0, 10));
+		Cache cache = cacheManager.getCache(bh);
+		Reviews re = cache.get(bh, Reviews.class);
+		logger.info(re);
+		return reviews;
 	}
 	
-	public void findByMovieBh(String movie_bh,int page, int size, HttpServletResponse response){
-		if(StringUtil.isEmpty(movie_bh)){
-			return;
+	@ResponseBody
+	@RequestMapping("findByMovie/{bh}")	
+	public void findByMovieBh(@PathVariable String bh, String page, String size, String orderField, String order, HttpServletResponse response){
+		//默认按照有用数倒序排列
+		if(StringUtil.isEmpty(orderField)){
+			orderField = "useful_count";
+		}if(StringUtil.isEmpty(order)){
+			order = "desc";
 		}
-		List<Reviews> reviewsList = biz.findByWhereStr("p.movie_bh='"+movie_bh+"'", "time", "desc", page, size);
+		Map<String, String> param = initPageAndSize(page, size, 5);
+		List<Reviews> reviewsList = biz.findByMovieBh("p.movie_bh='"+bh+"'", orderField, order, Integer.valueOf(param.get("page")), Integer.valueOf(param.get("size")));
 		renderToJson(JSONObject.toJSONString(new PageInfo<Reviews>(reviewsList)), response);
 	}
 	
